@@ -1,11 +1,11 @@
-package com.test.videosstories.common.repository
+package com.test.videosstories.common.repository.source.local
 
 import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import com.test.videosstories.common.repository.entity.ItemEntity
+import com.test.videosstories.common.repository.source.local.entity.ItemEntity
 
 @Dao
 interface ItemDao {
@@ -13,5 +13,5 @@ interface ItemDao {
     fun getItems(): LiveData<List<ItemEntity>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertAll(items: List<ItemDatabase>)
+    fun insertAll(items: List<ItemEntity>)
 }
