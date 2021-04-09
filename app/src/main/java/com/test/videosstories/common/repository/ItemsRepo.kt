@@ -8,8 +8,8 @@ import kotlinx.coroutines.withContext
 class ItemsRepo(private val database: ItemDatabase) {
     suspend fun refreshItems() {
         withContext(Dispatchers.IO) {
-            val remoteItems = NetworkCaller.remoteItems.getData()
-            database.itemDao.insertAll(remoteItems.toEntities())
+            val remoteItems = NetworkCaller.getData()
+            //database.itemDao.insertAll(remoteItems.toEntities())
         }
     }
 }
