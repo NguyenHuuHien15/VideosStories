@@ -1,12 +1,12 @@
-package com.test.videosstories.common.repository.source.local
+package com.test.videosstories.common.repository.local
 
 import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.test.videosstories.common.repository.source.local.entity.ItemEntity
+import com.test.videosstories.common.repository.local.entity.ItemEntity
 
-@Database(entities = [ItemEntity::class], version = 1)
+@Database(entities = [ItemEntity::class], version = 1, exportSchema = false)
 abstract class ItemDatabase : RoomDatabase() {
     abstract val itemDao: ItemDao
 }

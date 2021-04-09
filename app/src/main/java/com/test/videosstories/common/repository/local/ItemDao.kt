@@ -1,11 +1,11 @@
-package com.test.videosstories.common.repository.source.local
+package com.test.videosstories.common.repository.local
 
 import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import com.test.videosstories.common.repository.source.local.entity.ItemEntity
+import com.test.videosstories.common.repository.local.entity.ItemEntity
 
 @Dao
 interface ItemDao {

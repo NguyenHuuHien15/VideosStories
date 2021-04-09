@@ -6,7 +6,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
 import com.test.videosstories.common.repository.ItemsRepo
-import com.test.videosstories.common.repository.source.local.getDatabase
+import com.test.videosstories.common.repository.local.getDatabase
 import kotlinx.coroutines.launch
 import java.io.IOException
 

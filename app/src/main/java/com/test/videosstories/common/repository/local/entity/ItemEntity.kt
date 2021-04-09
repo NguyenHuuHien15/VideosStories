@@ -1,4 +1,4 @@
-package com.test.videosstories.common.repository.source.local.entity
+package com.test.videosstories.common.repository.local.entity
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey

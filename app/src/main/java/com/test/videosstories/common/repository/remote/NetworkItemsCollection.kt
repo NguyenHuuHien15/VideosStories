@@ -1,21 +1,21 @@
-package com.test.videosstories.common.model
+package com.test.videosstories.common.repository.remote
 
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
 import java.io.Serializable
 
-class Item : Serializable {
+class NetworkItemsCollection : Serializable {
     @SerializedName("videos")
     @Expose
-    var videos: List<Video>? = null
+    var videos: List<NetworkVideo>? = null
 
     @SerializedName("stories")
     @Expose
-    var stories: List<Story>? = null
+    var stories: List<NetworkStory>? = null
 
     constructor() {}
 
-    constructor(videos: List<Video>?, stories: List<Story>?) {
+    constructor(videos: List<NetworkVideo>?, stories: List<NetworkStory>?) {
         this.videos = videos
         this.stories = stories
     }

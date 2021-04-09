@@ -1,10 +1,10 @@
-package com.test.videosstories.common.model
+package com.test.videosstories.common.repository.remote
 
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
 import java.io.Serializable
 
-class Story : Serializable {
+class NetworkStory : Serializable {
     @SerializedName("id")
     @Expose
     var id: Int = 0

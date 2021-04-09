@@ -1,15 +1,16 @@
 package com.test.videosstories.common.repository
 
-import com.test.videosstories.common.repository.source.local.ItemDatabase
-import com.test.videosstories.common.repository.source.remote.NetworkCaller
+import android.util.Log
+import com.test.videosstories.common.repository.local.ItemDatabase
+import com.test.videosstories.common.repository.remote.NetworkCaller
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
 class ItemsRepo(private val database: ItemDatabase) {
+    val LOG_TAG = ItemsRepo::class.simpleName
     suspend fun refreshItems() {
-        withContext(Dispatchers.IO) {
-            val remoteItems = NetworkCaller.getData()
-            //database.itemDao.insertAll(remoteItems.toEntities())
-        }
+        val data = NetworkCaller.getData()
+        Log.d(LOG_TAG, "Data : $data" )
+        Log.d(LOG_TAG, "Data : ${data.videos?.size}" )
     }
 }
