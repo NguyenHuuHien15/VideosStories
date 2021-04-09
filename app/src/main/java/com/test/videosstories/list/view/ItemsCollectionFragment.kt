@@ -1,7 +1,6 @@
 package com.test.videosstories.list.view
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -66,13 +65,11 @@ class ItemsCollectionFragment : Fragment() {
         recyclerView.layoutManager = mLayoutManager
         recyclerView.itemAnimator = DefaultItemAnimator()
         recyclerView.adapter = adapter
-        val items = viewModel.itemsCollection.value
-        adapter.submitList(items)
-        Log.d(LOG_TAG, "Data : ${items?.size}")
 
-        viewModel.itemsCollection.observe(viewLifecycleOwner, {
-            it?.apply {
-                adapter.submitList(it)
+        viewModel.itemsCollection.observe(viewLifecycleOwner, { allItems ->
+            allItems?.apply {
+                val sorted = allItems.toMutableList().sortedByDescending { it.date }
+                adapter.submitList(sorted)
             }
         })
     }
