@@ -1,18 +1,26 @@
 package com.test.videosstories.list.view
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.DefaultItemAnimator
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.test.videosstories.common.view.IDiffItemCallback
+import com.test.videosstories.common.view.ITextSearchFilter
 import com.test.videosstories.databinding.FragmentItemsCollectionBinding
+import com.test.videosstories.list.model.ItemForView
 import com.test.videosstories.list.viewmodel.ItemsCollectionViewModel
 
 class ItemsCollectionFragment : Fragment() {
     val LOG_TAG = ItemsCollectionFragment::class.simpleName
 
     private lateinit var dataBinding: FragmentItemsCollectionBinding
+    private lateinit var adapter: ItemsCollectionRecyAdapter
 
     private val viewModel: ItemsCollectionViewModel by lazy {
         val activity = requireNotNull(this.activity) {
@@ -32,6 +40,40 @@ class ItemsCollectionFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        activity?.setTitle("Items collection")
+        activity?.title = "Items collection"
+
+        adapter = ItemsCollectionRecyAdapter(requireContext(), viewModel.itemsCollection.value, object : ITextSearchFilter<ItemForView> {
+            override fun shouldBeDisplayed(constraint: CharSequence?, obj: ItemForView): Boolean {
+                if (constraint == null || constraint.isEmpty()) return true
+                val title = obj.title
+                if (title == null || title.isEmpty()) return true
+
+                val query = constraint.toString().toLowerCase()
+                return (title.toLowerCase().contains(query))
+            }
+        }, object : IDiffItemCallback<ItemForView> {
+            override fun areItemsTheSame(oldItem: ItemForView, newItem: ItemForView): Boolean {
+                return oldItem.id == newItem.id
+            }
+
+            override fun areContentsTheSame(oldItem: ItemForView, newItem: ItemForView): Boolean {
+                return oldItem == newItem
+            }
+        }, viewModel, viewLifecycleOwner)
+
+        val recyclerView = dataBinding.recyAllItems
+        val mLayoutManager: RecyclerView.LayoutManager = LinearLayoutManager(context)
+        recyclerView.layoutManager = mLayoutManager
+        recyclerView.itemAnimator = DefaultItemAnimator()
+        recyclerView.adapter = adapter
+        val items = viewModel.itemsCollection.value
+        adapter.submitList(items)
+        Log.d(LOG_TAG, "Data : ${items?.size}")
+
+        viewModel.itemsCollection.observe(viewLifecycleOwner, {
+            it?.apply {
+                adapter.submitList(it)
+            }
+        })
     }
 }

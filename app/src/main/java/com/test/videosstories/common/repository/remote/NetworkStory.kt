@@ -9,14 +9,19 @@ class NetworkStory : Serializable {
     @Expose
     var id: Int = 0
 
+    @SerializedName("title")
+    @Expose
+    var title: String? = null
+
     @SerializedName("image")
     @Expose
     var image: String? = null
 
     constructor() {}
 
-    constructor(id: Int, image: String?) : super() {
+    constructor(id: Int, title: String?, image: String?) : super() {
         this.id = id
+        this.title = title
         this.image = image
     }
 

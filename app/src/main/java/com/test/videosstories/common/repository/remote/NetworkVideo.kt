@@ -9,15 +9,20 @@ class NetworkVideo : Serializable {
     @Expose
     var id: Int = 0
 
+    @SerializedName("title")
+    @Expose
+    var title: String? = null
+
     @SerializedName("thumb")
     @Expose
     var thumb: String? = null
 
     constructor() {}
 
-    constructor(id: Int, thumb: String?) : super() {
+    constructor(id: Int, title: String?, thumb: String?) : super() {
         this.id = id
         this.thumb = thumb
+        this.title = title
     }
 
     companion object {
