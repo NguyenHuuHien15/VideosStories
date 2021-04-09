@@ -1,0 +1,47 @@
+<resources>
+
+    <style name="Text16">
+        <item name="android:textSize">@dimen/sp_16</item>
+    </style>
+
+    <style name="TextBlack">
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="TextWhite">
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="TextBlack16" parent="TextBlack">
+        <item name="android:textSize">@dimen/sp_16</item>
+    </style>
+
+    <style name="TextBlackBold" parent="TextBlack">
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="TextBlackBold16" parent="TextBlack16">
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="TextBlackBold18" parent="TextBlackBold">
+        <item name="android:textSize">@dimen/sp_18</item>
+    </style>
+
+    <style name="TextBlackBold24" parent="TextBlackBold">
+        <item name="android:textSize">@dimen/sp_24</item>
+    </style>
+
+    <style name="TextWhite20" parent="TextWhite">
+        <item name="android:textSize">@dimen/sp_20</item>
+    </style>
+
+    <style name="TextWhiteBold20" parent="TextWhite20">
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="TextWhite22" parent="TextWhite">
+        <item name="android:textSize">@dimen/sp_22</item>
+    </style>
+
+</resources>
