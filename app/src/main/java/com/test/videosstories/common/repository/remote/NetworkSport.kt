@@ -11,11 +11,11 @@ class NetworkSport : Serializable {
 
     @SerializedName("name")
     @Expose
-    var name: String? = null
+    lateinit var name: String
 
     constructor() {}
 
-    constructor(id: Int, name: String?) : super() {
+    constructor(id: Int, name: String) : super() {
         this.id = id
         this.name = name
     }

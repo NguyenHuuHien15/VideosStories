@@ -5,7 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.test.videosstories.list.model.ItemForView
 
-class ItemViewModel() : ViewModel() {
+class ItemViewModel : ViewModel() {
     val LOG_TAG = ItemViewModel::class.simpleName
 
     private val _item: MutableLiveData<ItemForView> = MutableLiveData()

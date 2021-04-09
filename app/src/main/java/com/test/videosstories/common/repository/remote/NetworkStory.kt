@@ -13,16 +13,36 @@ class NetworkStory : Serializable {
     @Expose
     var title: String? = null
 
+    @SerializedName("teaser")
+    @Expose
+    var teaser: String? = null
+
     @SerializedName("image")
     @Expose
     var image: String? = null
 
+    @SerializedName("date")
+    @Expose
+    var date: Double? = null
+
+    @SerializedName("author")
+    @Expose
+    var author: String? = null
+
+    @SerializedName("sport")
+    @Expose
+    lateinit var sport: NetworkSport
+
     constructor() {}
 
-    constructor(id: Int, title: String?, image: String?) : super() {
+    constructor(id: Int, title: String?, teaser: String?, image: String?, date: Double?, author: String?, sport: NetworkSport) {
         this.id = id
         this.title = title
+        this.teaser = teaser
         this.image = image
+        this.date = date
+        this.author = author
+        this.sport = sport
     }
 
     companion object {

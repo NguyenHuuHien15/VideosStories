@@ -17,12 +17,32 @@ class NetworkVideo : Serializable {
     @Expose
     var thumb: String? = null
 
+    @SerializedName("url")
+    @Expose
+    var url: String? = null
+
+    @SerializedName("date")
+    @Expose
+    var date: Double? = null
+
+    @SerializedName("sport")
+    @Expose
+    lateinit var sport: NetworkSport
+
+    @SerializedName("views")
+    @Expose
+    var views: Long? = null
+
     constructor() {}
 
-    constructor(id: Int, title: String?, thumb: String?) : super() {
+    constructor(id: Int, title: String?, thumb: String?, url: String?, date: Double?, sport: NetworkSport, views: Long?) {
         this.id = id
-        this.thumb = thumb
         this.title = title
+        this.thumb = thumb
+        this.url = url
+        this.date = date
+        this.sport = sport
+        this.views = views
     }
 
     companion object {

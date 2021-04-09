@@ -8,6 +8,7 @@ import com.test.videosstories.common.repository.local.getDatabase
 import com.test.videosstories.list.model.ItemForView
 import com.test.videosstories.list.view.ItemsCollectionFragment
 import kotlinx.coroutines.launch
+import org.apache.commons.lang3.StringUtils
 import java.io.IOException
 
 class ItemsCollectionViewModel(application: Application) : AndroidViewModel(application) {
@@ -31,16 +32,27 @@ class ItemsCollectionViewModel(application: Application) : AndroidViewModel(appl
                 val videos = networkItemsCollection.videos
                 if (videos != null) {
                     for (item in videos) {
-                        list.add(ItemForView(item.id, item.title))
+                        list.add(
+                            ItemForView(
+                                item.id, item.title, item.thumb, item.url, item.date, item.sport.id, item.sport.name, item.views,
+                                StringUtils.EMPTY, StringUtils.EMPTY, StringUtils.EMPTY, true
+                            )
+                        )
                     }
                 }
 
                 val stories = networkItemsCollection.stories
                 if (stories != null) {
                     for (item in stories) {
-                        list.add(ItemForView(item.id, item.title))
+                        list.add(
+                            ItemForView(
+                                item.id, item.title, StringUtils.EMPTY, StringUtils.EMPTY, item.date, item.sport.id, item.sport.name,
+                                null, item.teaser, item.image, item.author, false
+                            )
+                        )
                     }
                 }
+                
                 _itemsCollection.value = list
 
                 Log.d(LOG_TAG, "Data : ${itemsCollection.value?.size}")
