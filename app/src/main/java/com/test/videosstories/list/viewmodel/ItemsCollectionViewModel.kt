@@ -52,7 +52,7 @@ class ItemsCollectionViewModel(application: Application) : AndroidViewModel(appl
                         )
                     }
                 }
-                
+
                 _itemsCollection.value = list
 
                 Log.d(LOG_TAG, "Data : ${itemsCollection.value?.size}")

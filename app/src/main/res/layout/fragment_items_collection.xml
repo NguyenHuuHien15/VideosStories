@@ -12,7 +12,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="@dimen/dp_16">
+        android:background="@color/grey_light">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recy_all_items"
