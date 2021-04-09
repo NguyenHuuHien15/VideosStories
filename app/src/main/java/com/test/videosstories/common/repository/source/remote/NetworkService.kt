@@ -5,13 +5,13 @@ import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.http.GET
 
 interface NetworkService {
-    @GET("devbytes")
+    @GET("videos")
     suspend fun getData(): NetworkItemsContainer
 }
 
 object NetworkCaller {
     private val retrofit = Retrofit.Builder()
-        .baseUrl("https://android-kotlin-fun-mars-server.appspot.com/")
+        .baseUrl("https://extendsclass.com/api/json-storage/bin/edfefba/")
         .addConverterFactory(MoshiConverterFactory.create())
         .build()
 
