@@ -18,23 +18,28 @@ data class ItemEntity constructor(
     val image: String?,
     val author: String?,
     val isVideo: Boolean
-)
-
-fun List<ItemEntity>.toModels(): List<ItemForView> {
-    return map {
-        ItemForView(
-            id = it.id,
-            title = it.title,
-            thumb = it.thumb,
-            url = it.url,
-            date = it.date,
-            sportId = it.sportId,
-            sportName = it.sportName,
-            views = it.views,
-            teaser = it.teaser,
-            image = it.image,
-            author = it.author,
-            isVideo = it.isVideo
+) {
+    fun toModel(): ItemForView {
+        return ItemForView(
+            id = this.id,
+            title = this.title,
+            thumb = this.thumb,
+            url = this.url,
+            date = this.date,
+            sportId = this.sportId,
+            sportName = this.sportName,
+            views = this.views,
+            teaser = this.teaser,
+            image = this.image,
+            author = this.author,
+            isVideo = this.isVideo
         )
     }
 }
+
+fun List<ItemEntity>.toModels(): List<ItemForView> {
+    return map {
+        it.toModel()
+    }
+}
+

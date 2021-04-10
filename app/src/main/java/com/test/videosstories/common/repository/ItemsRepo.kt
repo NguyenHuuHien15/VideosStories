@@ -30,4 +30,8 @@ class ItemsRepo(private val database: ItemDatabase) {
             it.toModels()
         }
     }
+
+    suspend fun getItemFromDB(id: Int): ItemForView? {
+        return database.itemDao.getItem(id)?.toModel()
+    }
 }
