@@ -92,7 +92,9 @@ class ItemsCollectionFragment : Fragment() {
                 if (it.isVideo) {
 
                 } else {
-                    findNavController().navigate(R.id.action_ItemsCollection_to_StoryDetails)
+                    val action = ItemsCollectionFragmentDirections.actionItemsCollectionToStoryDetails()
+                    action.itemId = it.id
+                    findNavController().navigate(action)
                     viewModel.doneNavigatingToStoryDetails()
                 }
             }

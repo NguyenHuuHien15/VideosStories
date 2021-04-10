@@ -76,7 +76,7 @@
                 android:paddingBottom="@dimen/dp_8"
                 android:text="@{viewModelItem.item.sportName}"
                 android:textAllCaps="true"
-                tools:text="kjdfkdjf" />
+                tools:text="Sport name" />
         </RelativeLayout>
 
         <TextView
@@ -87,7 +87,7 @@
             android:layout_marginStart="@dimen/dp_16"
             android:layout_marginTop="@dimen/dp_16"
             android:text="@{viewModelItem.item.title}"
-            tools:text="dkjfdkjf" />
+            tools:text="Title" />
 
         <TextView
             android:id="@+id/tv_views_or_author"
@@ -97,7 +97,7 @@
             android:layout_marginStart="@dimen/dp_16"
             android:layout_marginTop="@dimen/dp_8"
             app:content="@{viewModelItem.item}"
-            tools:text="dkjfdkjf" />
+            tools:text="Views or author" />
 
     </LinearLayout>
 

@@ -20,5 +20,10 @@
         android:id="@+id/StoryDetailsFragment"
         android:name="com.test.videosstories.detail.view.StoryDetailsFragment"
         android:label="StoryDetailsFragment"
-        tools:layout="@layout/fragment_story_details" />
+        tools:layout="@layout/fragment_story_details">
+        <argument
+            android:name="itemId"
+            android:defaultValue="0"
+            app:argType="integer" />
+    </fragment>
 </navigation>

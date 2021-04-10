@@ -1,20 +1,122 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/grey_light"
-    android:padding="@dimen/dp_16">
 
-    <ImageButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:background="@drawable/ic_share_white_32_0" />
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <ImageButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:background="@drawable/ic_back_white_32_0" />
+    <data>
 
-</RelativeLayout>
+        <import type="android.view.View" />
+
+        <variable
+            name="viewModelItem"
+            type="com.test.videosstories.detail.viewmodel.StoryDetailsViewModel" />
+
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingBottom="@dimen/dp_16"
+                android:translationZ="@dimen/dp_4">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="260dp">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="260dp"
+                        android:layout_marginBottom="@dimen/dp_32">
+
+                        <ImageView
+                            android:id="@+id/imgv"
+                            android:layout_width="match_parent"
+                            android:layout_height="260dp"
+                            android:scaleType="centerCrop"
+                            app:url_story="@{viewModelItem.item}"
+                            tools:src="@tools:sample/backgrounds/scenic" />
+                    </RelativeLayout>
+
+                    <TextView
+                        android:id="@+id/tv_sport_name"
+                        style="@style/TextWhiteBold20"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="true"
+                        android:layout_marginStart="@dimen/dp_16"
+                        android:background="@drawable/background_rounded_rect"
+                        android:paddingStart="@dimen/dp_16"
+                        android:paddingTop="@dimen/dp_8"
+                        android:paddingEnd="@dimen/dp_16"
+                        android:paddingBottom="@dimen/dp_8"
+                        android:text="@{viewModelItem.item.sportName}"
+                        android:textAllCaps="true"
+                        tools:text="Sport name" />
+                </RelativeLayout>
+
+                <TextView
+                    android:id="@+id/tv_title"
+                    style="@style/TextBlackBold24"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/dp_16"
+                    android:layout_marginTop="@dimen/dp_16"
+                    android:text="@{viewModelItem.item.title}"
+                    tools:text="Title" />
+
+                <TextView
+                    android:id="@+id/tv_author"
+                    style="@style/Text16"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/dp_16"
+                    android:layout_marginTop="@dimen/dp_8"
+                    app:content="@{viewModelItem.item}"
+                    tools:text="Author" />
+
+                <TextView
+                    android:id="@+id/tv_teaser"
+                    style="@style/TextBlack18"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/dp_16"
+                    android:layout_marginTop="@dimen/dp_16"
+                    android:text="@{viewModelItem.item.teaser}"
+                    tools:text="Teaser" />
+
+            </LinearLayout>
+
+        </ScrollView>
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_margin="@dimen/dp_8"
+            android:background="@drawable/ic_back_white_32_0"
+            android:onClick="@{() -> viewModelItem.onBackClicked()}"
+            android:translationZ="@dimen/dp_8" />
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_margin="@dimen/dp_8"
+            android:background="@drawable/ic_share_white_32_0"
+            android:translationZ="@dimen/dp_8" />
+
+    </RelativeLayout>
+
+</layout>
+

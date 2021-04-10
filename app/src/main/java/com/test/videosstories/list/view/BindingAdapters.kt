@@ -28,6 +28,19 @@ fun bindImage(imgView: ImageView, item: ItemForView?) {
     }
 }
 
+@BindingAdapter("url_story")
+fun bindStoryImage(imgView: ImageView, item: ItemForView?) {
+    if (item == null) return
+
+    val imgUrl = item.image
+    imgUrl?.let {
+        val imgUri = imgUrl.toUri().buildUpon().scheme("https").build()
+
+        val requestOptions = RequestOptions()
+        Glide.with(imgView.context).load(imgUri).apply(requestOptions.placeholder(R.drawable.loading_animation).error(R.drawable.ic_broken_image)).into(imgView)
+    }
+}
+
 @BindingAdapter("content")
 fun setContentOfTextView(view: TextView, item: ItemForView?) {
     if (item == null) return
