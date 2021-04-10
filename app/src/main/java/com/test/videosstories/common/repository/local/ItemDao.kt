@@ -9,9 +9,13 @@ import com.test.videosstories.common.repository.local.entity.ItemEntity
 
 @Dao
 interface ItemDao {
-    @Query("select * from itementity")
-    fun getItems(): LiveData<List<ItemEntity>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertAll(items: List<ItemEntity>)
+    suspend fun insertAll(items: List<ItemEntity>)
+
+    @Query("SELECT * from item_entity_table WHERE id = :key")
+    suspend fun getItem(key: Int): ItemEntity?
+
+    @Query("SELECT * from item_entity_table")
+    fun getItems(): LiveData<List<ItemEntity>>
 }
