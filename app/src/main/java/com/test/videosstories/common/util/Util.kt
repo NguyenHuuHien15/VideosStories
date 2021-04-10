@@ -1,0 +1,34 @@
+package com.test.videosstories.common.util
+
+import com.test.videosstories.common.repository.local.entity.ItemEntity
+import com.test.videosstories.common.repository.remote.NetworkItemsCollection
+import org.apache.commons.lang3.StringUtils
+
+fun networkToEntities(networkItemsCollection: NetworkItemsCollection): List<ItemEntity> {
+    val list = mutableListOf<ItemEntity>()
+    val videos = networkItemsCollection.videos
+    if (videos != null) {
+        for (item in videos) {
+            list.add(
+                ItemEntity(
+                    item.id, item.title, item.thumb, item.url, item.date, item.sport.id, item.sport.name, item.views,
+                    StringUtils.EMPTY, StringUtils.EMPTY, StringUtils.EMPTY, true
+                )
+            )
+        }
+    }
+
+    val stories = networkItemsCollection.stories
+    if (stories != null) {
+        for (item in stories) {
+            list.add(
+                ItemEntity(
+                    item.id, item.title, StringUtils.EMPTY, StringUtils.EMPTY, item.date, item.sport.id, item.sport.name,
+                    null, item.teaser, item.image, item.author, false
+                )
+            )
+        }
+    }
+
+    return list
+}

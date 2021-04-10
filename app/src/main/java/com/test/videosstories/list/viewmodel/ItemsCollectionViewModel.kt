@@ -1,14 +1,12 @@
 package com.test.videosstories.list.viewmodel
 
 import android.app.Application
-import android.util.Log
 import androidx.lifecycle.*
 import com.test.videosstories.common.repository.ItemsRepo
 import com.test.videosstories.common.repository.local.getDatabase
 import com.test.videosstories.list.model.ItemForView
 import com.test.videosstories.list.view.ItemsCollectionFragment
 import kotlinx.coroutines.launch
-import org.apache.commons.lang3.StringUtils
 import java.io.IOException
 
 class ItemsCollectionViewModel(application: Application) : AndroidViewModel(application) {
@@ -17,8 +15,7 @@ class ItemsCollectionViewModel(application: Application) : AndroidViewModel(appl
 
     private val itemsRepo = ItemsRepo(getDatabase(application))
 
-    private val _itemsCollection: MutableLiveData<List<ItemForView>> = MutableLiveData()
-    val itemsCollection: LiveData<List<ItemForView>> get() = _itemsCollection
+    val itemsCollection: LiveData<List<ItemForView>> get() = itemsRepo.getAllItemsFromDB()
 
     private val _clickedItem: MutableLiveData<ItemForView> = MutableLiveData()
     val clickedItem: LiveData<ItemForView> get() = _clickedItem
@@ -31,35 +28,7 @@ class ItemsCollectionViewModel(application: Application) : AndroidViewModel(appl
     private fun refreshItems() {
         viewModelScope.launch {
             try {
-                val networkItemsCollection = itemsRepo.refreshItems()
-                val list = mutableListOf<ItemForView>()
-                val videos = networkItemsCollection.videos
-                if (videos != null) {
-                    for (item in videos) {
-                        list.add(
-                            ItemForView(
-                                item.id, item.title, item.thumb, item.url, item.date, item.sport.id, item.sport.name, item.views,
-                                StringUtils.EMPTY, StringUtils.EMPTY, StringUtils.EMPTY, true
-                            )
-                        )
-                    }
-                }
-
-                val stories = networkItemsCollection.stories
-                if (stories != null) {
-                    for (item in stories) {
-                        list.add(
-                            ItemForView(
-                                item.id, item.title, StringUtils.EMPTY, StringUtils.EMPTY, item.date, item.sport.id, item.sport.name,
-                                null, item.teaser, item.image, item.author, false
-                            )
-                        )
-                    }
-                }
-
-                _itemsCollection.value = list
-
-                Log.d(LOG_TAG, "Data : ${itemsCollection.value?.size}")
+                itemsRepo.getAndSaveNetworkItemsToDB()
             } catch (networkError: IOException) {
             }
         }

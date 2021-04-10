@@ -2,6 +2,7 @@ package com.test.videosstories.common.repository.local.entity
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import com.test.videosstories.list.model.ItemForView
 
 @Entity(tableName = "item_entity_table")
 data class ItemEntity constructor(
@@ -18,3 +19,22 @@ data class ItemEntity constructor(
     val author: String?,
     val isVideo: Boolean
 )
+
+fun List<ItemEntity>.toModels(): List<ItemForView> {
+    return map {
+        ItemForView(
+            id = it.id,
+            title = it.title,
+            thumb = it.thumb,
+            url = it.url,
+            date = it.date,
+            sportId = it.sportId,
+            sportName = it.sportName,
+            views = it.views,
+            teaser = it.teaser,
+            image = it.image,
+            author = it.author,
+            isVideo = it.isVideo
+        )
+    }
+}
