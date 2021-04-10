@@ -18,9 +18,13 @@ class ItemsCollectionViewModel(application: Application) : AndroidViewModel(appl
     private val itemsRepo = ItemsRepo(getDatabase(application))
 
     private val _itemsCollection: MutableLiveData<List<ItemForView>> = MutableLiveData()
-    val itemsCollection: MutableLiveData<List<ItemForView>> get() = _itemsCollection
+    val itemsCollection: LiveData<List<ItemForView>> get() = _itemsCollection
+
+    private val _clickedItem: MutableLiveData<ItemForView> = MutableLiveData()
+    val clickedItem: LiveData<ItemForView> get() = _clickedItem
 
     init {
+        _clickedItem.value = null
         refreshItems()
     }
 
@@ -59,6 +63,14 @@ class ItemsCollectionViewModel(application: Application) : AndroidViewModel(appl
             } catch (networkError: IOException) {
             }
         }
+    }
+
+    fun onItemClicked(item: ItemForView) {
+        _clickedItem.value = item
+    }
+
+    fun doneNavigatingToStoryDetails() {
+        _clickedItem.value = null
     }
 
     class Factory(val app: Application) : ViewModelProvider.Factory {

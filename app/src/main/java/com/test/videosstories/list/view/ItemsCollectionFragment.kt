@@ -1,13 +1,13 @@
 package com.test.videosstories.list.view
 
+import android.os.Build
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -42,11 +42,18 @@ class ItemsCollectionFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        //activity?.title = "FEATURED"
-        //activity?.title = "Featured"
         val actionBar = (activity as AppCompatActivity).supportActionBar
+        actionBar?.show()
         actionBar?.displayOptions = ActionBar.DISPLAY_SHOW_CUSTOM
         actionBar?.setCustomView(R.layout.custom_actionbar)
+
+        val window = activity?.window
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+            //window?.insetsController?.show(WindowInsets.Type.statusBars())
+            window?.insetsController?.hide(WindowInsets.Type.statusBars())
+        } else {
+            window?.setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN)
+        }
 
         adapter = ItemsCollectionRecyAdapter(requireContext(), viewModel.itemsCollection.value, object : ITextSearchFilter<ItemForView> {
             override fun shouldBeDisplayed(constraint: CharSequence?, obj: ItemForView): Boolean {
@@ -77,6 +84,17 @@ class ItemsCollectionFragment : Fragment() {
             allItems?.apply {
                 val sorted = allItems.toMutableList().sortedByDescending { it.date }
                 adapter.submitList(sorted)
+            }
+        })
+
+        viewModel.clickedItem.observe(viewLifecycleOwner, {
+            it?.apply {
+                if (it.isVideo) {
+
+                } else {
+                    findNavController().navigate(R.id.action_ItemsCollection_to_StoryDetails)
+                    viewModel.doneNavigatingToStoryDetails()
+                }
             }
         })
     }

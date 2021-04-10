@@ -9,6 +9,16 @@
     <fragment
         android:id="@+id/ItemsCollectionFragment"
         android:name="com.test.videosstories.list.view.ItemsCollectionFragment"
-        android:label="AlbumsListFragment"
-        tools:layout="@layout/fragment_items_collection" />
+        android:label="ItemsCollectionFragment"
+        tools:layout="@layout/fragment_items_collection">
+        <action
+            android:id="@+id/action_ItemsCollection_to_StoryDetails"
+            app:destination="@id/StoryDetailsFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/StoryDetailsFragment"
+        android:name="com.test.videosstories.detail.view.StoryDetailsFragment"
+        android:label="StoryDetailsFragment"
+        tools:layout="@layout/fragment_story_details" />
 </navigation>

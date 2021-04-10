@@ -24,6 +24,7 @@
         android:layout_marginTop="@dimen/dp_16"
         android:layout_marginEnd="@dimen/dp_16"
         android:background="@drawable/background_rounded_rect_white"
+        android:onClick="@{() -> viewmodel.onItemClicked(viewModelItem.item)}"
         android:orientation="vertical"
         android:paddingBottom="@dimen/dp_16"
         android:translationZ="@dimen/dp_4">
