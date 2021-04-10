@@ -5,6 +5,9 @@ import android.widget.TextView
 import androidx.core.net.toUri
 import androidx.databinding.BindingAdapter
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.MultiTransformation
+import com.bumptech.glide.load.resource.bitmap.CenterCrop
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.bumptech.glide.request.RequestOptions
 import com.test.videosstories.R
 import com.test.videosstories.list.model.ItemForView
@@ -17,9 +20,11 @@ fun bindImage(imgView: ImageView, item: ItemForView?) {
     val imgUrl = if (item.isVideo) item.thumb else item.image
     imgUrl?.let {
         val imgUri = imgUrl.toUri().buildUpon().scheme("https").build()
-        Glide.with(imgView.context).load(imgUri).apply(
-            RequestOptions().placeholder(R.drawable.loading_animation).error(R.drawable.ic_broken_image)
-        ).into(imgView)
+
+        val requestOptions = RequestOptions()
+        Glide.with(imgView.context).load(imgUri).apply(requestOptions.placeholder(R.drawable.loading_animation).error(R.drawable.ic_broken_image)).into(imgView)
+
+        imgView.clipToOutline = true
     }
 }
 

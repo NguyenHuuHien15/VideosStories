@@ -4,11 +4,14 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.ActionBar
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.test.videosstories.R
 import com.test.videosstories.common.view.IDiffItemCallback
 import com.test.videosstories.common.view.ITextSearchFilter
 import com.test.videosstories.databinding.FragmentItemsCollectionBinding
@@ -39,7 +42,11 @@ class ItemsCollectionFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        activity?.title = "Items collection"
+        //activity?.title = "FEATURED"
+        //activity?.title = "Featured"
+        val actionBar = (activity as AppCompatActivity).supportActionBar
+        actionBar?.displayOptions = ActionBar.DISPLAY_SHOW_CUSTOM
+        actionBar?.setCustomView(R.layout.custom_actionbar)
 
         adapter = ItemsCollectionRecyAdapter(requireContext(), viewModel.itemsCollection.value, object : ITextSearchFilter<ItemForView> {
             override fun shouldBeDisplayed(constraint: CharSequence?, obj: ItemForView): Boolean {
