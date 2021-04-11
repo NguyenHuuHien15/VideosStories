@@ -3,6 +3,7 @@ package com.test.videosstories.list.view
 import android.os.Build
 import android.os.Bundle
 import android.view.*
+import android.widget.Toast
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
@@ -101,6 +102,13 @@ class ItemsCollectionFragment : Fragment() {
                     findNavController().navigate(action)
                     viewModel.doneNavigating()
                 }
+            }
+        })
+
+        viewModel.needNotifyNetworkError.observe(viewLifecycleOwner, {
+            if (it == true) {
+                Toast.makeText(requireContext(), "No Internet connection", Toast.LENGTH_LONG).show()
+                viewModel.doneNotifyNetworkError()
             }
         })
     }

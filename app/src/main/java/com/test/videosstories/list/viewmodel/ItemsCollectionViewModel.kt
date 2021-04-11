@@ -1,6 +1,7 @@
 package com.test.videosstories.list.viewmodel
 
 import android.app.Application
+import android.util.Log
 import androidx.lifecycle.*
 import com.test.videosstories.common.repository.ItemsRepo
 import com.test.videosstories.common.repository.local.getDatabase
@@ -18,8 +19,12 @@ class ItemsCollectionViewModel(application: Application) : AndroidViewModel(appl
     private val _clickedItem: MutableLiveData<ItemForView> = MutableLiveData()
     val clickedItem: LiveData<ItemForView> get() = _clickedItem
 
+    private val _needNotifyNetworkError: MutableLiveData<Boolean> = MutableLiveData()
+    val needNotifyNetworkError : LiveData<Boolean> get() = _needNotifyNetworkError
+
     init {
         _clickedItem.value = null
+        _needNotifyNetworkError.value = false
         refreshItems()
     }
 
@@ -28,6 +33,7 @@ class ItemsCollectionViewModel(application: Application) : AndroidViewModel(appl
             try {
                 itemsRepo.getAndSaveNetworkItemsToDB()
             } catch (networkError: IOException) {
+                _needNotifyNetworkError.value = true
             }
         }
     }
@@ -38,6 +44,10 @@ class ItemsCollectionViewModel(application: Application) : AndroidViewModel(appl
 
     fun doneNavigating() {
         _clickedItem.value = null
+    }
+
+    fun doneNotifyNetworkError() {
+        _needNotifyNetworkError.value = false
     }
 
 }
