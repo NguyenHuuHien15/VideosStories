@@ -17,6 +17,7 @@ import com.test.videosstories.common.view.ITextSearchFilter
 import com.test.videosstories.databinding.FragmentItemsCollectionBinding
 import com.test.videosstories.list.model.ItemForView
 import com.test.videosstories.list.viewmodel.ItemsCollectionViewModel
+import com.test.videosstories.list.viewmodel.ItemsCollectionViewModelFactory
 
 class ItemsCollectionFragment : Fragment() {
     val LOG_TAG = ItemsCollectionFragment::class.simpleName
@@ -28,7 +29,7 @@ class ItemsCollectionFragment : Fragment() {
         val activity = requireNotNull(this.activity) {
             "You can only access the viewModel after onActivityCreated()"
         }
-        ViewModelProvider(this, ItemsCollectionViewModel.Factory(activity.application))
+        ViewModelProvider(this, ItemsCollectionViewModelFactory(activity.application))
             .get(ItemsCollectionViewModel::class.java)
     }
 

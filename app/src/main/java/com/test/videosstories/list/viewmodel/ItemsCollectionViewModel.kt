@@ -5,13 +5,11 @@ import androidx.lifecycle.*
 import com.test.videosstories.common.repository.ItemsRepo
 import com.test.videosstories.common.repository.local.getDatabase
 import com.test.videosstories.list.model.ItemForView
-import com.test.videosstories.list.view.ItemsCollectionFragment
 import kotlinx.coroutines.launch
 import java.io.IOException
 
 class ItemsCollectionViewModel(application: Application) : AndroidViewModel(application) {
-    //val LOG_TAG = ItemsCollectionViewModel::class.simpleName
-    val LOG_TAG = ItemsCollectionFragment::class.simpleName
+    val LOG_TAG = ItemsCollectionViewModel::class.simpleName
 
     private val itemsRepo = ItemsRepo(getDatabase(application))
 
@@ -42,14 +40,5 @@ class ItemsCollectionViewModel(application: Application) : AndroidViewModel(appl
         _clickedItem.value = null
     }
 
-    class Factory(val app: Application) : ViewModelProvider.Factory {
-        override fun <T : ViewModel?> create(modelClass: Class<T>): T {
-            if (modelClass.isAssignableFrom(ItemsCollectionViewModel::class.java)) {
-                @Suppress("UNCHECKED_CAST")
-                return ItemsCollectionViewModel(app) as T
-            }
-            throw IllegalArgumentException("Unable to construct viewmodel")
-        }
-    }
 }
 
