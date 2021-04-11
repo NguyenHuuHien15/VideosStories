@@ -36,7 +36,7 @@ class ItemsCollectionViewModel(application: Application) : AndroidViewModel(appl
         _clickedItem.value = item
     }
 
-    fun doneNavigatingToStoryDetails() {
+    fun doneNavigating() {
         _clickedItem.value = null
     }
 

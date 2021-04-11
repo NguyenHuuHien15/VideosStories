@@ -59,6 +59,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
                 android:background="@drawable/ic_play_white_48_0"
+                android:onClick="@{() -> viewmodel.onItemClicked(viewModelItem.item)}"
                 android:translationZ="@dimen/dp_8"
                 android:visibility="@{viewModelItem.item.video == true ? View.VISIBLE : View.GONE}" />
 

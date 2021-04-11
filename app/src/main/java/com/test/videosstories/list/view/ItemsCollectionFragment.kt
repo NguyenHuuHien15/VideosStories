@@ -91,12 +91,15 @@ class ItemsCollectionFragment : Fragment() {
         viewModel.clickedItem.observe(viewLifecycleOwner, {
             it?.apply {
                 if (it.isVideo) {
-
+                    val action = ItemsCollectionFragmentDirections.actionItemsCollectionToPlayerVideo()
+                    action.urlVideo = it.url.toString()
+                    findNavController().navigate(action)
+                    viewModel.doneNavigating()
                 } else {
                     val action = ItemsCollectionFragmentDirections.actionItemsCollectionToStoryDetails()
                     action.itemId = it.id
                     findNavController().navigate(action)
-                    viewModel.doneNavigatingToStoryDetails()
+                    viewModel.doneNavigating()
                 }
             }
         })
