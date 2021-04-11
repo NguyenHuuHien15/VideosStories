@@ -61,8 +61,7 @@ class PlayerVideoFragment : Fragment() {
 
         playerView = dataBinding.videoView
         dataBinding.videoView.findViewById<ImageButton>(R.id.img_btn_back).setOnClickListener {
-            activity?.onBackPressed()
-            viewModel.doneBackToHome()
+            viewModel.onBackClicked()
         }
     }
 
