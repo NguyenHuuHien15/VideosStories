@@ -3,9 +3,9 @@ package com.test.videosstories.common.repository
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Transformations
 import com.test.videosstories.common.repository.local.ItemDatabase
-import com.test.videosstories.common.repository.local.entity.toModels
 import com.test.videosstories.common.repository.remote.NetworkCaller
 import com.test.videosstories.common.util.networkToEntities
+import com.test.videosstories.common.util.toModels
 import com.test.videosstories.list.model.ItemForView
 import javax.inject.Inject
 import javax.inject.Singleton
@@ -22,7 +22,7 @@ class ItemsRepo @Inject constructor(private val database: ItemDatabase) {
 
     fun getAllItemsFromDB(): LiveData<List<ItemForView>> {
         return Transformations.map(database.itemDao.getItems()) {
-            it.toModels()
+            toModels(it)
         }
     }
 

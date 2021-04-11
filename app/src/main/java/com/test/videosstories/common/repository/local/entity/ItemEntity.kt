@@ -36,10 +36,3 @@ data class ItemEntity constructor(
         )
     }
 }
-
-fun List<ItemEntity>.toModels(): List<ItemForView> {
-    return map {
-        it.toModel()
-    }
-}
-

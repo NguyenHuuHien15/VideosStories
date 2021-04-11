@@ -2,6 +2,7 @@ package com.test.videosstories.common.util
 
 import com.test.videosstories.common.repository.local.entity.ItemEntity
 import com.test.videosstories.common.repository.remote.NetworkItemsCollection
+import com.test.videosstories.list.model.ItemForView
 import org.apache.commons.lang3.StringUtils
 
 fun networkToEntities(networkItemsCollection: NetworkItemsCollection): List<ItemEntity> {
@@ -31,4 +32,16 @@ fun networkToEntities(networkItemsCollection: NetworkItemsCollection): List<Item
     }
 
     return list
+}
+
+fun toModels(list: List<ItemEntity>?): List<ItemForView> {
+    if (list == null || list.isEmpty()) return emptyList()
+    return list.map {
+        it.toModel()
+    }
+}
+
+fun sortByDate(list: List<ItemForView>?): List<ItemForView> {
+    if (list == null || list.isEmpty()) return emptyList()
+    return list.toMutableList().sortedByDescending { it.date }
 }

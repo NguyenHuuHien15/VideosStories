@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.test.videosstories.MainActivity
 import com.test.videosstories.R
+import com.test.videosstories.common.util.sortByDate
 import com.test.videosstories.common.view.IDiffItemCallback
 import com.test.videosstories.common.view.ITextSearchFilter
 import com.test.videosstories.databinding.FragmentItemsCollectionBinding
@@ -89,10 +90,7 @@ class ItemsCollectionFragment : Fragment() {
         recyclerView.adapter = adapter
 
         viewModel.itemsCollection.observe(viewLifecycleOwner, { allItems ->
-            allItems?.apply {
-                val sorted = allItems.toMutableList().sortedByDescending { it.date }
-                adapter.submitList(sorted)
-            }
+            adapter.submitList(sortByDate(allItems))
         })
 
         viewModel.clickedItem.observe(viewLifecycleOwner, {
