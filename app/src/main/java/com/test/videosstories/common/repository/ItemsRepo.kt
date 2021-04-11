@@ -7,8 +7,11 @@ import com.test.videosstories.common.repository.local.entity.toModels
 import com.test.videosstories.common.repository.remote.NetworkCaller
 import com.test.videosstories.common.util.networkToEntities
 import com.test.videosstories.list.model.ItemForView
+import javax.inject.Inject
+import javax.inject.Singleton
 
-class ItemsRepo(private val database: ItemDatabase) {
+@Singleton
+class ItemsRepo @Inject constructor(private val database: ItemDatabase) {
     val LOG_TAG = ItemsRepo::class.simpleName
 
     suspend fun getAndSaveNetworkItemsToDB() {

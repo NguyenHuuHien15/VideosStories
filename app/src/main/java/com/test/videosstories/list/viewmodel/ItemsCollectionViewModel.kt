@@ -1,18 +1,16 @@
 package com.test.videosstories.list.viewmodel
 
-import android.app.Application
-import android.util.Log
-import androidx.lifecycle.*
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.test.videosstories.common.repository.ItemsRepo
-import com.test.videosstories.common.repository.local.getDatabase
 import com.test.videosstories.list.model.ItemForView
 import kotlinx.coroutines.launch
 import java.io.IOException
 
-class ItemsCollectionViewModel(application: Application) : AndroidViewModel(application) {
+class ItemsCollectionViewModel(private val itemsRepo: ItemsRepo) : ViewModel() {
     val LOG_TAG = ItemsCollectionViewModel::class.simpleName
-
-    private val itemsRepo = ItemsRepo(getDatabase(application))
 
     val itemsCollection: LiveData<List<ItemForView>> get() = itemsRepo.getAllItemsFromDB()
 
@@ -20,15 +18,15 @@ class ItemsCollectionViewModel(application: Application) : AndroidViewModel(appl
     val clickedItem: LiveData<ItemForView> get() = _clickedItem
 
     private val _needNotifyNetworkError: MutableLiveData<Boolean> = MutableLiveData()
-    val needNotifyNetworkError : LiveData<Boolean> get() = _needNotifyNetworkError
+    val needNotifyNetworkError: LiveData<Boolean> get() = _needNotifyNetworkError
 
     init {
         _clickedItem.value = null
         _needNotifyNetworkError.value = false
-        refreshItems()
+        getAndSaveNetworkItemsToDB()
     }
 
-    private fun refreshItems() {
+    private fun getAndSaveNetworkItemsToDB() {
         viewModelScope.launch {
             try {
                 itemsRepo.getAndSaveNetworkItemsToDB()

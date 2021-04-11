@@ -4,7 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
-class PlayerVideoViewModel(url: String) : ViewModel() {
+class PlayerVideoViewModel() : ViewModel() {
 
     private val _urlVideo = MutableLiveData<String>()
     val urlVideo: LiveData<String> get() = _urlVideo
@@ -14,6 +14,10 @@ class PlayerVideoViewModel(url: String) : ViewModel() {
 
     init {
         _backToHome.value = false
+        //_urlVideo.value = url
+    }
+
+    fun setUrl(url: String) {
         _urlVideo.value = url
     }
 
