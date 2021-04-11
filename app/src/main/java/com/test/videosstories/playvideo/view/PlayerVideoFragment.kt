@@ -1,9 +1,9 @@
 package com.test.videosstories.playvideo.view
 
-import android.annotation.SuppressLint
 import android.os.Build
 import android.os.Bundle
 import android.view.*
+import android.widget.ImageButton
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
@@ -11,6 +11,7 @@ import com.google.android.exoplayer2.MediaItem
 import com.google.android.exoplayer2.SimpleExoPlayer
 import com.google.android.exoplayer2.ui.PlayerView
 import com.google.android.exoplayer2.util.Util
+import com.test.videosstories.R
 import com.test.videosstories.databinding.FragmentPlayerVideoBinding
 import com.test.videosstories.playvideo.viewmodel.PlayerVideoViewModel
 import com.test.videosstories.playvideo.viewmodel.PlayerVideoViewModelFactory
@@ -59,6 +60,10 @@ class PlayerVideoFragment : Fragment() {
         })
 
         playerView = dataBinding.videoView
+        dataBinding.videoView.findViewById<ImageButton>(R.id.img_btn_back).setOnClickListener {
+            activity?.onBackPressed()
+            viewModel.doneBackToHome()
+        }
     }
 
     override fun onStart() {
@@ -70,7 +75,6 @@ class PlayerVideoFragment : Fragment() {
 
     override fun onResume() {
         super.onResume()
-        hideSystemUi()
         if (Util.SDK_INT <= 23 || player == null) {
             initializePlayer()
         }
@@ -110,15 +114,5 @@ class PlayerVideoFragment : Fragment() {
             player!!.release()
             player = null
         }
-    }
-
-    @SuppressLint("InlinedApi")
-    private fun hideSystemUi() {
-        /*playerView.systemUiVisibility = (View.SYSTEM_UI_FLAG_LOW_PROFILE
-                or View.SYSTEM_UI_FLAG_FULLSCREEN
-                or View.SYSTEM_UI_FLAG_LAYOUT_STABLE
-                or View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY
-                or View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
-                or View.SYSTEM_UI_FLAG_HIDE_NAVIGATION)*/
     }
 }
