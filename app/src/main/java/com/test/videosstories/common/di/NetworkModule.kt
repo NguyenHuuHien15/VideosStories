@@ -2,16 +2,12 @@ package com.test.videosstories.common.di
 
 import com.test.videosstories.common.repository.remote.INetworkService
 import com.test.videosstories.common.repository.remote.NetworkService
+import dagger.Binds
 import dagger.Module
-import dagger.Provides
-import javax.inject.Singleton
 
 @Module
-class NetworkModule {
+abstract class NetworkModule {
 
-    @Provides
-    @Singleton
-    fun providesNetworkService(): INetworkService {
-        return NetworkService()
-    }
+    @Binds
+    abstract fun providesNetworkService(networkService: NetworkService): INetworkService
 }
