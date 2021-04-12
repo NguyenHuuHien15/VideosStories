@@ -4,14 +4,15 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.test.videosstories.common.MyApplication
 import com.test.videosstories.common.di.AppComponent
+import com.test.videosstories.common.di.MainComponent
 
 class MainActivity : AppCompatActivity() {
 
-    lateinit var appComponent: AppComponent
+    lateinit var mainComponent: MainComponent
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        appComponent = (application as MyApplication).appComponent
-        appComponent.inject(this)
+        mainComponent = (application as MyApplication).appComponent.mainComponent().create()
+        mainComponent.inject(this)
 
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
