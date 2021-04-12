@@ -16,24 +16,12 @@
         <item name="android:textStyle">bold</item>
     </style>
 
-    <style name="TextBlack16" parent="TextBlack">
-        <item name="android:textSize">@dimen/sp_16</item>
-    </style>
-
     <style name="TextBlack18" parent="TextBlack">
         <item name="android:textSize">@dimen/sp_18</item>
     </style>
 
     <style name="TextBlackBold" parent="TextBlack">
         <item name="android:textStyle">bold</item>
-    </style>
-
-    <style name="TextBlackBold16" parent="TextBlack16">
-        <item name="android:textStyle">bold</item>
-    </style>
-
-    <style name="TextBlackBold18" parent="TextBlackBold">
-        <item name="android:textSize">@dimen/sp_18</item>
     </style>
 
     <style name="TextBlackBold24" parent="TextBlackBold">
@@ -49,14 +37,6 @@
     </style>
 
     <style name="TextWhiteBold22" parent="TextWhiteBold">
-        <item name="android:textSize">@dimen/sp_22</item>
-    </style>
-
-    <style name="TextWhiteBold24" parent="TextWhiteBold">
-        <item name="android:textSize">@dimen/sp_24</item>
-    </style>
-
-    <style name="TextWhite22" parent="TextWhite">
         <item name="android:textSize">@dimen/sp_22</item>
     </style>
 
