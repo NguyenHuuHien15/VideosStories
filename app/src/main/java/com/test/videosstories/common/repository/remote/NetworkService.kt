@@ -2,10 +2,11 @@ package com.test.videosstories.common.repository.remote
 
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import javax.inject.Inject
 
 const val BASE_URL = "https://extendsclass.com"
 
-class NetworkService : INetworkService{
+class NetworkService @Inject constructor() : INetworkService{
     val LOG_TAG = NetworkService::class.simpleName
 
     private val retrofit = Retrofit.Builder()
