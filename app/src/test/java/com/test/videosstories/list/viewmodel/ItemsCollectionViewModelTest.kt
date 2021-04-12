@@ -38,32 +38,32 @@ class ItemsCollectionViewModelTest {
 
     @Test
     fun getClickedItem() {
-        assertEquals(LiveDataTestUtil.getValue(viewModel.clickedItem), null)
+        assertEquals(null, LiveDataTestUtil.getValue(viewModel.clickedItem))
     }
 
     @Test
     fun getNeedNotifyNetworkError() {
-        assertEquals(LiveDataTestUtil.getValue(viewModel.needNotifyNetworkError), false)
+        assertEquals(false, LiveDataTestUtil.getValue(viewModel.needNotifyNetworkError))
     }
 
     @Test
     fun onItemClicked() {
         viewModel.onItemClicked(video)
-        assertEquals(LiveDataTestUtil.getValue(viewModel.clickedItem), video)
+        assertEquals(video, LiveDataTestUtil.getValue(viewModel.clickedItem))
 
         viewModel.onItemClicked(story)
-        assertEquals(LiveDataTestUtil.getValue(viewModel.clickedItem), story)
+        assertEquals(story, LiveDataTestUtil.getValue(viewModel.clickedItem))
     }
 
     @Test
     fun doneNavigating() {
         viewModel.doneNavigating()
-        assertEquals(LiveDataTestUtil.getValue(viewModel.clickedItem), null)
+        assertEquals(null, LiveDataTestUtil.getValue(viewModel.clickedItem))
     }
 
     @Test
     fun doneNotifyNetworkError() {
         viewModel.doneNotifyNetworkError()
-        assertEquals(LiveDataTestUtil.getValue(viewModel.needNotifyNetworkError), false)
+        assertEquals(false, LiveDataTestUtil.getValue(viewModel.needNotifyNetworkError))
     }
 }
