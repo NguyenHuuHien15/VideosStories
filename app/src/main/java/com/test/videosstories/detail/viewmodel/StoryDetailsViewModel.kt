@@ -6,9 +6,12 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.test.videosstories.common.repository.ItemsRepo
 import com.test.videosstories.list.model.ItemForView
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class StoryDetailsViewModel(private val itemsRepo: ItemsRepo) : ViewModel() {
+@HiltViewModel
+class StoryDetailsViewModel @Inject constructor(private val itemsRepo: ItemsRepo) : ViewModel() {
 
     private val _item = MutableLiveData<ItemForView>()
     val item: LiveData<ItemForView> get() = _item

@@ -6,10 +6,13 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.test.videosstories.common.repository.ItemsRepo
 import com.test.videosstories.list.model.ItemForView
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import java.io.IOException
+import javax.inject.Inject
 
-class ItemsCollectionViewModel(private val itemsRepo: ItemsRepo) : ViewModel() {
+@HiltViewModel
+class ItemsCollectionViewModel @Inject constructor(private val itemsRepo: ItemsRepo) : ViewModel() {
     val LOG_TAG = ItemsCollectionViewModel::class.simpleName
 
     val itemsCollection: LiveData<List<ItemForView>> get() = itemsRepo.getAllItemsFromDB()

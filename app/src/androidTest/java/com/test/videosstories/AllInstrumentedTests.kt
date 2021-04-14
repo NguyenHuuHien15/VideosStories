@@ -9,8 +9,8 @@ import org.junit.runners.Suite
 @RunWith(Suite::class)
 // @formatter:off
 @Suite.SuiteClasses(
-    ExampleInstrumentedTest::class,
     ItemDaoTest::class,
+    ApplicationTest::class
 )
 // @formatter:on
 class AllInstrumentedTests {

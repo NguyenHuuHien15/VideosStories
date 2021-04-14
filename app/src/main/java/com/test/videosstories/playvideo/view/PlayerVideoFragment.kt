@@ -1,33 +1,29 @@
 package com.test.videosstories.playvideo.view
 
-import android.content.Context
 import android.os.Build
 import android.os.Bundle
 import android.view.*
 import android.widget.ImageButton
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
+import androidx.fragment.app.viewModels
 import com.google.android.exoplayer2.MediaItem
 import com.google.android.exoplayer2.SimpleExoPlayer
 import com.google.android.exoplayer2.ui.PlayerView
 import com.google.android.exoplayer2.util.Util
-import com.test.videosstories.MainActivity
 import com.test.videosstories.R
 import com.test.videosstories.databinding.FragmentPlayerVideoBinding
 import com.test.videosstories.playvideo.viewmodel.PlayerVideoViewModel
-import com.test.videosstories.playvideo.viewmodel.PlayerVideoViewModelFactory
+import dagger.hilt.android.AndroidEntryPoint
 import org.apache.commons.lang3.StringUtils
-import javax.inject.Inject
 
+@AndroidEntryPoint
 class PlayerVideoFragment : Fragment() {
     val LOG_TAG = PlayerVideoFragment::class.simpleName
 
     private lateinit var dataBinding: FragmentPlayerVideoBinding
 
-    @Inject
-    lateinit var viewModelFactory: PlayerVideoViewModelFactory
-    private lateinit var viewModel: PlayerVideoViewModel
+    private val viewModel: PlayerVideoViewModel by viewModels()
 
     private lateinit var playerView: PlayerView
     private var player: SimpleExoPlayer? = null
@@ -35,17 +31,9 @@ class PlayerVideoFragment : Fragment() {
     private var currentWindow = 0
     private var playbackPosition: Long = 0
 
-    override fun onAttach(context: Context) {
-        super.onAttach(context)
-        (activity as MainActivity).mainComponent.inject(this)
-    }
-
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         dataBinding = FragmentPlayerVideoBinding.inflate(layoutInflater, container, false)
         dataBinding.lifecycleOwner = viewLifecycleOwner
-
-        viewModel = ViewModelProvider(this, viewModelFactory).get(PlayerVideoViewModel::class.java)
-
         dataBinding.viewModel = viewModel
         return dataBinding.root
     }

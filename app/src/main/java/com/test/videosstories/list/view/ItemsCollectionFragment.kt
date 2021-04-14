@@ -1,6 +1,5 @@
 package com.test.videosstories.list.view
 
-import android.content.Context
 import android.os.Build
 import android.os.Bundle
 import android.view.*
@@ -8,12 +7,11 @@ import android.widget.Toast
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.test.videosstories.MainActivity
 import com.test.videosstories.R
 import com.test.videosstories.common.util.sortByDate
 import com.test.videosstories.common.view.IDiffItemCallback
@@ -21,29 +19,21 @@ import com.test.videosstories.common.view.ITextSearchFilter
 import com.test.videosstories.databinding.FragmentItemsCollectionBinding
 import com.test.videosstories.list.model.ItemForView
 import com.test.videosstories.list.viewmodel.ItemsCollectionViewModel
-import com.test.videosstories.list.viewmodel.ItemsCollectionViewModelFactory
-import javax.inject.Inject
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class ItemsCollectionFragment : Fragment() {
     val LOG_TAG = ItemsCollectionFragment::class.simpleName
 
     private lateinit var dataBinding: FragmentItemsCollectionBinding
     private lateinit var adapter: ItemsCollectionRecyAdapter
 
-    @Inject
-    lateinit var viewModelFactory: ItemsCollectionViewModelFactory
-    private lateinit var viewModel: ItemsCollectionViewModel
-
-    override fun onAttach(context: Context) {
-        super.onAttach(context)
-        (activity as MainActivity).mainComponent.inject(this)
-    }
+    private val viewModel: ItemsCollectionViewModel by viewModels()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         dataBinding = FragmentItemsCollectionBinding.inflate(layoutInflater, container, false)
         dataBinding.lifecycleOwner = viewLifecycleOwner
 
-        viewModel = ViewModelProvider(this, viewModelFactory).get(ItemsCollectionViewModel::class.java)
         dataBinding.viewmodel = viewModel
         return dataBinding.root
     }

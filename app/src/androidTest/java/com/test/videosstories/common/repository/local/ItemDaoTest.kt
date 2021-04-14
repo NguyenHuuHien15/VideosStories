@@ -4,8 +4,10 @@ import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.room.Room
 import androidx.test.core.app.ApplicationProvider
 import androidx.test.ext.junit.runners.AndroidJUnit4
-import com.test.videosstories.LiveDataInstrumentedTestUtil
+import com.test.videosstories.LiveDataTestUtil
 import com.test.videosstories.common.repository.local.entity.ItemEntity
+import dagger.hilt.android.testing.HiltAndroidRule
+import dagger.hilt.android.testing.HiltAndroidTest
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runBlockingTest
 import org.junit.After
@@ -13,14 +15,16 @@ import org.junit.Assert.assertEquals
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
+import org.junit.rules.RuleChain
 import org.junit.runner.RunWith
 
 @ExperimentalCoroutinesApi
 @RunWith(AndroidJUnit4::class)
+@HiltAndroidTest
 class ItemDaoTest {
 
     @get:Rule
-    val instantExecutorRule = InstantTaskExecutorRule()
+    var rule = RuleChain.outerRule(HiltAndroidRule(this)).around(InstantTaskExecutorRule())
 
     private lateinit var itemDao: ItemDao
     private lateinit var db: ItemDatabase
@@ -58,7 +62,7 @@ class ItemDaoTest {
         itemDao.insertAll(entryList)
 
         val listInDB = itemDao.getItems()
-        assertEquals(LiveDataInstrumentedTestUtil.getValue(listInDB), entryList)
+        assertEquals(LiveDataTestUtil.getValue(listInDB), entryList)
     }
 
     @Test

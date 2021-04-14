@@ -3,8 +3,11 @@ package com.test.videosstories.playvideo.viewmodel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 
-class PlayerVideoViewModel : ViewModel() {
+@HiltViewModel
+class PlayerVideoViewModel @Inject constructor() : ViewModel() {
 
     private val _urlVideo = MutableLiveData<String>()
     val urlVideo: LiveData<String> get() = _urlVideo
