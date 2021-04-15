@@ -33,11 +33,11 @@ class AppTest {
     @get:Rule
     var rule = RuleChain.outerRule(HiltAndroidRule(this))
 
-    @ExperimentalCoroutinesApi
+    /*@ExperimentalCoroutinesApi
     @Before
     fun clearDB() = runBlockingTest {
         InstrumentationRegistry.getInstrumentation().targetContext.deleteDatabase("items")
-    }
+    }*/
 
     @Test
     fun runApp() {
