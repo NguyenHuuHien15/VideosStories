@@ -7,6 +7,7 @@ import androidx.test.core.app.ActivityScenario
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.assertion.ViewAssertions.matches
+import androidx.test.espresso.contrib.RecyclerViewActions.actionOnItem
 import androidx.test.espresso.contrib.RecyclerViewActions.actionOnItemAtPosition
 import androidx.test.espresso.matcher.BoundedMatcher
 import androidx.test.espresso.matcher.ViewMatchers.*
@@ -48,7 +49,8 @@ class AppTest {
         onView(withId(R.id.recy_all_items)).check(matches(atPosition(1, hasDescendant(withText("Video 1")))))
 
         // Click on story item at position 0 to open Story details fragment (the order is inversed because of sort by date)
-        onView(withId(R.id.recy_all_items)).perform(actionOnItemAtPosition<RecyclerView.ViewHolder>(0, click()))
+        //onView(withId(R.id.recy_all_items)).perform(actionOnItemAtPosition<RecyclerView.ViewHolder>(0, click()))
+        onView(withId(R.id.recy_all_items)).perform(actionOnItem<RecyclerView.ViewHolder>(hasDescendant(withText("Story 2")), click()))
 
         onView(withId(R.id.tv_title)).check(matches(withText("Story 2")))
         onView(withId(R.id.tv_sport_name)).check(matches(withText("Volley")))
