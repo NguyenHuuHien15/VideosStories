@@ -1,6 +1,7 @@
 package com.test.videosstories
 
 import android.view.View
+import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.recyclerview.widget.RecyclerView
 import androidx.test.core.app.ActivityScenario
 import androidx.test.espresso.Espresso.onView
@@ -9,18 +10,34 @@ import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.contrib.RecyclerViewActions.actionOnItemAtPosition
 import androidx.test.espresso.matcher.BoundedMatcher
 import androidx.test.espresso.matcher.ViewMatchers.*
+import androidx.test.ext.junit.runners.AndroidJUnit4
+import androidx.test.platform.app.InstrumentationRegistry
 import dagger.hilt.android.testing.HiltAndroidRule
 import dagger.hilt.android.testing.HiltAndroidTest
+import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.test.runBlockingTest
 import org.hamcrest.Description
 import org.hamcrest.Matcher
+import org.junit.Before
+import org.junit.BeforeClass
 import org.junit.Rule
 import org.junit.Test
+import org.junit.rules.RuleChain
+import org.junit.runner.RunWith
 
+@ExperimentalCoroutinesApi
+@RunWith(AndroidJUnit4::class)
 @HiltAndroidTest
-class ApplicationTest {
+class AppTest {
 
     @get:Rule
-    var hiltRule = HiltAndroidRule(this)
+    var rule = RuleChain.outerRule(HiltAndroidRule(this))
+
+    @ExperimentalCoroutinesApi
+    @Before
+    fun clearDB() = runBlockingTest {
+        InstrumentationRegistry.getInstrumentation().targetContext.deleteDatabase("items")
+    }
 
     @Test
     fun runApp() {

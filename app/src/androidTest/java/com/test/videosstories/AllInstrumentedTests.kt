@@ -10,7 +10,7 @@ import org.junit.runners.Suite
 // @formatter:off
 @Suite.SuiteClasses(
     ItemDaoTest::class,
-    ApplicationTest::class
+    AppTest::class
 )
 // @formatter:on
 class AllInstrumentedTests {
