@@ -1,5 +1,6 @@
 package com.test.videosstories;
 
+import com.test.videosstories.common.repository.ItemsRepoTest;
 import com.test.videosstories.common.repository.local.entity.ItemEntityTest;
 import com.test.videosstories.common.util.UtilTest;
 import com.test.videosstories.detail.viewmodel.StoryDetailsViewModelTest;
@@ -19,6 +20,7 @@ import org.junit.runners.Suite;
         UtilTest.class,
         StoryDetailsViewModelTest.class,
         PlayerVideoViewModelTest.class,
+        ItemsRepoTest.class
 })
 // @formatter:on
 public class AllUnitTests {

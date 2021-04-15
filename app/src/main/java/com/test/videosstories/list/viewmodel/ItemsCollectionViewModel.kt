@@ -29,7 +29,7 @@ class ItemsCollectionViewModel @Inject constructor(private val itemsRepo: ItemsR
         getAndSaveNetworkItemsToDB()
     }
 
-    private fun getAndSaveNetworkItemsToDB() {
+    fun getAndSaveNetworkItemsToDB() {
         viewModelScope.launch {
             try {
                 itemsRepo.getAndSaveNetworkItemsToDB()
