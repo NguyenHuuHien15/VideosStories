@@ -18,6 +18,7 @@ import org.junit.runners.Suite
     ItemsCollectionFragmentTest::class,
     AppTest::class,
     AppTestWithMockServer::class,
+    AppTestWithMockServerError::class,
 )
 // @formatter:on
 class AllInstrumentedTests {

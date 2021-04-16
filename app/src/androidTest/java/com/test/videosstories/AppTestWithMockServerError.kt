@@ -1,12 +1,13 @@
 package com.test.videosstories
 
-import androidx.recyclerview.widget.RecyclerView
+import android.view.View
 import androidx.test.core.app.ActivityScenario
 import androidx.test.espresso.Espresso.onView
-import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.assertion.ViewAssertions.matches
-import androidx.test.espresso.contrib.RecyclerViewActions.actionOnItem
-import androidx.test.espresso.matcher.ViewMatchers.*
+import androidx.test.espresso.matcher.RootMatchers.withDecorView
+import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
+import androidx.test.espresso.matcher.ViewMatchers.withText
+import androidx.test.ext.junit.rules.ActivityScenarioRule
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.test.videosstories.common.di.NetworkModule
 import com.test.videosstories.common.repository.remote.FakeLocalNetworkService
@@ -20,6 +21,7 @@ import dagger.hilt.android.testing.UninstallModules
 import dagger.hilt.components.SingletonComponent
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import okhttp3.mockwebserver.MockWebServer
+import org.hamcrest.Matchers.not
 import org.junit.After
 import org.junit.Before
 import org.junit.Rule
@@ -27,18 +29,24 @@ import org.junit.Test
 import org.junit.runner.RunWith
 import javax.inject.Singleton
 
+
 @ExperimentalCoroutinesApi
 @UninstallModules(
     NetworkModule::class
 )
 @RunWith(AndroidJUnit4::class)
 @HiltAndroidTest
-class AppTestWithMockServer {
+class AppTestWithMockServerError {
 
-    @get:Rule
+    @get:Rule(order = 0)
     var rule = HiltAndroidRule(this)
 
+    @get:Rule(order = 1)
+    var activityScenarioRule: ActivityScenarioRule<MainActivity> = ActivityScenarioRule(MainActivity::class.java)
+
     private lateinit var mockWebServer: MockWebServer
+
+    private var decorView: View? = null
 
     @Module
     @InstallIn(SingletonComponent::class)
@@ -49,12 +57,21 @@ class AppTestWithMockServer {
         abstract fun providesNetworkService(networkService: FakeLocalNetworkService): INetworkService
     }
 
+
     @Before
     fun setUp() {
         rule.inject()
         mockWebServer = MockWebServer()
-        mockWebServer.dispatcher = MockServerDispatcher().RequestDispatcher()
+        mockWebServer.dispatcher = MockServerDispatcher().ErrorDispatcher()
         mockWebServer.start(8080)
+
+        activityScenarioRule.scenario.onActivity(object : ActivityScenario.ActivityAction<MainActivity> {
+            override fun perform(activity: MainActivity?) {
+                if (activity != null) {
+                    decorView = activity.window.decorView
+                }
+            }
+        })
     }
 
     @After
@@ -63,22 +80,11 @@ class AppTestWithMockServer {
     }
 
     @Test
-    fun runAppWithMockServer() {
-        ActivityScenario.launch(MainActivity::class.java)
-
-        onView(withId(R.id.recy_all_items)).check(matches(isDisplayed()))
-        onView(withId(R.id.recy_all_items)).check(matches(atPosition(0, hasDescendant(withText("CHRONIQUE FRITSCH")))))
-        onView(withId(R.id.recy_all_items)).check(matches(atPosition(1, hasDescendant(withText("Il n'en fallait pas plus au Real pour relancer le feuilleton Mbappé")))))
-
-        // Click on story item at position 0 to open Story details fragment (the order is inversed because of sort by date)
-        onView(withId(R.id.recy_all_items)).perform(actionOnItem<RecyclerView.ViewHolder>(hasDescendant(withText("CHRONIQUE FRITSCH")), click()))
-
-        // Back to home fragment
-        onView(withId(R.id.img_btn_back)).check(matches(isDisplayed()))
-        onView(withId(R.id.img_btn_back)).perform(click())
-
-        // On home fragment
-        onView(withId(R.id.recy_all_items)).check(matches(isDisplayed()))
+    fun runAppWithMockServerError() {
+        //ActivityScenario.launch(MainActivity::class.java)
+        onView(withText(R.string.no_internet_connection))
+            .inRoot(withDecorView(not(decorView)))// Here we use decorView
+            .check(matches(isDisplayed()))
     }
 
 }

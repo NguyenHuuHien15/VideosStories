@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">VideosStories</string>
+    <string name="no_internet_connection">No Internet connection</string>
 </resources>

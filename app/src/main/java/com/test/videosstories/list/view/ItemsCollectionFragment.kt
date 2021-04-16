@@ -101,7 +101,7 @@ class ItemsCollectionFragment : Fragment() {
 
         viewModel.needNotifyNetworkError.observe(viewLifecycleOwner, {
             if (it == true) {
-                Toast.makeText(requireContext(), "No Internet connection", Toast.LENGTH_LONG).show()
+                Toast.makeText(requireContext(), getString(R.string.no_internet_connection), Toast.LENGTH_LONG).show()
                 viewModel.doneNotifyNetworkError()
             }
         })
