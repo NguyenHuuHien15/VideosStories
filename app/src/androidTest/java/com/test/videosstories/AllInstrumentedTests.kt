@@ -15,7 +15,7 @@ import org.junit.runners.Suite
     ItemDaoTest::class,
     ItemsCollectionViewModelInstrumentedTest::class,
     StoryDetailsViewModelInstrumentedTest::class,
-    //ItemsCollectionFragmentTest::class,
+    ItemsCollectionFragmentTest::class,
     AppTest::class,
     AppTestWithMockServer::class,
 )

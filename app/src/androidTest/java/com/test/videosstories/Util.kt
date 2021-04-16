@@ -5,7 +5,6 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.test.espresso.matcher.BoundedMatcher
 import org.hamcrest.Description
 import org.hamcrest.Matcher
-import java.io.InputStreamReader
 
 fun atPosition(position: Int, itemMatcher: Matcher<View?>): Matcher<View?> {
     checkNotNull(itemMatcher)

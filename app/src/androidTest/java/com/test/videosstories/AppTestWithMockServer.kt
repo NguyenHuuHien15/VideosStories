@@ -50,7 +50,7 @@ class AppTestWithMockServer {
     }
 
     @Before
-    fun init() {
+    fun setUp() {
         rule.inject()
         mockWebServer = MockWebServer()
         mockWebServer.dispatcher = MockServerDispatcher().RequestDispatcher()
