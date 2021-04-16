@@ -41,7 +41,7 @@ class AppTestWithMockServer {
 
     @Module
     @InstallIn(SingletonComponent::class)
-    abstract class FakeBaseUrlModule {
+    abstract class FakeLocalNetworkModule {
 
         @Binds
         abstract fun providesNetworkService(networkService: FakeLocalNetworkService): INetworkService

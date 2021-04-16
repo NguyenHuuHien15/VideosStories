@@ -1,44 +1,52 @@
 package com.test.videosstories
 
-import android.view.View
-import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.recyclerview.widget.RecyclerView
 import androidx.test.core.app.ActivityScenario
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.contrib.RecyclerViewActions.actionOnItem
-import androidx.test.espresso.contrib.RecyclerViewActions.actionOnItemAtPosition
-import androidx.test.espresso.matcher.BoundedMatcher
 import androidx.test.espresso.matcher.ViewMatchers.*
 import androidx.test.ext.junit.runners.AndroidJUnit4
-import androidx.test.platform.app.InstrumentationRegistry
+import com.test.videosstories.common.di.NetworkModule
+import com.test.videosstories.common.repository.remote.FakeNetworkService
+import com.test.videosstories.common.repository.remote.INetworkService
+import dagger.Binds
+import dagger.Module
+import dagger.hilt.InstallIn
 import dagger.hilt.android.testing.HiltAndroidRule
 import dagger.hilt.android.testing.HiltAndroidTest
+import dagger.hilt.android.testing.UninstallModules
+import dagger.hilt.components.SingletonComponent
 import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.test.runBlockingTest
-import org.hamcrest.Description
-import org.hamcrest.Matcher
 import org.junit.Before
-import org.junit.BeforeClass
 import org.junit.Rule
 import org.junit.Test
-import org.junit.rules.RuleChain
 import org.junit.runner.RunWith
 
 @ExperimentalCoroutinesApi
+@UninstallModules(
+    NetworkModule::class
+)
 @RunWith(AndroidJUnit4::class)
 @HiltAndroidTest
 class AppTest {
 
     @get:Rule
-    var rule = RuleChain.outerRule(HiltAndroidRule(this))
+    var rule = HiltAndroidRule(this)
 
-    /*@ExperimentalCoroutinesApi
+    @Module
+    @InstallIn(SingletonComponent::class)
+    abstract class TestNetworkModule {
+
+        @Binds
+        abstract fun providesNetworkService(networkService: FakeNetworkService): INetworkService
+    }
+
     @Before
-    fun clearDB() = runBlockingTest {
-        InstrumentationRegistry.getInstrumentation().targetContext.deleteDatabase("items")
-    }*/
+    fun setUp() {
+        rule.inject()
+    }
 
     @Test
     fun runApp() {
