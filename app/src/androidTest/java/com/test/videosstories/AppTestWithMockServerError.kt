@@ -29,7 +29,6 @@ import org.junit.Test
 import org.junit.runner.RunWith
 import javax.inject.Singleton
 
-
 @ExperimentalCoroutinesApi
 @UninstallModules(
     NetworkModule::class
@@ -57,7 +56,6 @@ class AppTestWithMockServerError {
         abstract fun providesNetworkService(networkService: FakeLocalNetworkService): INetworkService
     }
 
-
     @Before
     fun setUp() {
         rule.inject()
@@ -65,13 +63,11 @@ class AppTestWithMockServerError {
         mockWebServer.dispatcher = MockServerDispatcher().ErrorDispatcher()
         mockWebServer.start(8080)
 
-        activityScenarioRule.scenario.onActivity(object : ActivityScenario.ActivityAction<MainActivity> {
-            override fun perform(activity: MainActivity?) {
-                if (activity != null) {
-                    decorView = activity.window.decorView
-                }
+        activityScenarioRule.scenario.onActivity { activity ->
+            if (activity != null) {
+                decorView = activity.window.decorView
             }
-        })
+        }
     }
 
     @After
