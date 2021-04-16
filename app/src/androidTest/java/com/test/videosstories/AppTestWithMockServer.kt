@@ -61,7 +61,7 @@ class AppTestWithMockServer {
     }
 
     @Test
-    fun runApp() {
+    fun runAppWithMockServer() {
         ActivityScenario.launch(MainActivity::class.java)
 
         onView(withId(R.id.recy_all_items)).check(matches(isDisplayed()))
