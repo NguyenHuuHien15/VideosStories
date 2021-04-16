@@ -23,6 +23,7 @@ import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
+import javax.inject.Singleton
 
 @ExperimentalCoroutinesApi
 @UninstallModules(
@@ -39,6 +40,7 @@ class AppTest {
     @InstallIn(SingletonComponent::class)
     abstract class TestNetworkModule {
 
+        @Singleton
         @Binds
         abstract fun providesNetworkService(networkService: FakeNetworkService): INetworkService
     }

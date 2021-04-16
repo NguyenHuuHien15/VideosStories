@@ -25,6 +25,7 @@ import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
+import javax.inject.Singleton
 
 @ExperimentalCoroutinesApi
 @UninstallModules(
@@ -43,6 +44,7 @@ class AppTestWithMockServer {
     @InstallIn(SingletonComponent::class)
     abstract class FakeLocalNetworkModule {
 
+        @Singleton
         @Binds
         abstract fun providesNetworkService(networkService: FakeLocalNetworkService): INetworkService
     }
