@@ -17,6 +17,7 @@ import org.junit.runners.Suite
     StoryDetailsViewModelInstrumentedTest::class,
     //ItemsCollectionFragmentTest::class,
     AppTest::class,
+    AppTestWithMockServer::class,
 )
 // @formatter:on
 class AllInstrumentedTests {

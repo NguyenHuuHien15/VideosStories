@@ -1,0 +1,66 @@
+{
+  "videos": [
+    {
+      "id": 777788,
+      "title": "CHRONIQUE FRITSCH",
+      "thumb": "https://i.eurosport.com/2020/01/27/2763745-57096910-2560-1440.jpg",
+      "url": "https://vod-eurosport.akamaized.net/nogeo/2019/10/22/CHRONIQUE_FRITSCH_22102019_V1_22040825-1254400-2300-1024-576.mp4",
+      "date": 1588224445.007,
+      "sport": {
+        "id": 22,
+        "name": "Football"
+      },
+      "views": 12333
+    },
+    {
+      "id": 774689,
+      "title": "Il n'en fallait pas plus au Real pour relancer le feuilleton Mbappé",
+      "thumb": "https://imgresizer.eurosport.com/unsafe/1200x0/filters:focal(402x374:404x372)/origin-imgresizer.eurosport.com/2019/09/01/2667509-55172490-2560-1440.jpg",
+      "url": "https://vod-eurosport.akamaized.net/ebu-au/2020/04/30/MERCATO_BUZZ_30042020-5eaaa0331066736b896c4e9f_Apr_30_2020_14_12_23_30041802-1311979-2300-1024-576.mp4",
+      "date": 1488113445.007,
+      "sport": {
+        "id": 22,
+        "name": "Football"
+      },
+      "views": 8950
+    }
+  ],
+  "stories": [
+    {
+      "id": 7738009,
+      "title": "Tour de France, arr\u00EAt de la L1, Agassi-Sampras, 8 secondes : le plateau du jour",
+      "teaser": "Ce soir, c'est le weekend ! En ce 46e jour de confinement, il y a donc toutes les raisons d'avoir la forme. Surtout qu'il va y avoir de l'actualit\u00E9 ce jeudi. Cerise sur le g\u00E2teau : si vous voulez vous replonger dans les plus belles heures du sport, on a tout ce qu\u2019il faut pour vous. Voici notre plateau matinal.",
+      "image": "https://i.eurosport.com/2020/04/30/2812653-58018086-640-220.jpg",
+      "date": 158822.007,
+      "author": "John doe",
+      "sport": {
+        "id": 95,
+        "name": "Omnisport"
+      }
+    },
+    {
+      "id": 7737839,
+      "title": "Malgr\u00E9 l'arr\u00EAt de la L1, le PSG et Lyon pourraient jouer en C1 selon un membre ex\u00E9cutif de l'UEFA",
+      "teaser": "Andre Agassi f\u00EAte mercredi son 50e anniversaire. Pour l'occasion, on vous propose un quiz sur un aspect important de l'oeuvre du \"Kid de Las Vegas\" : le style. A vous d'identifier s'il s'agit ou non de l'homme aux huit titres du Grand Chelem sur les photos suivantes.",
+      "image": "https://i.eurosport.com/2009/10/28/554648-6892499-128-96.jpg",
+      "date": 158811.433,
+      "author": "R\u00E9my De Souza",
+      "sport": {
+        "id": 22,
+        "name": "Football"
+      }
+    },
+    {
+      "id": 7736588,
+      "title": "Guillen : \"La Vuelta doit \u00EAtre la preuve que nous retrouvons nos vies\"",
+      "teaser": "TOUR D'ESPAGNE - La Vuelta f\u00EAte son 85e anniversaire cette semaine. Mais on ignore encore quand et comment elle se disputera en 2020. Une chose est s\u00FBre, elle est esp\u00E9r\u00E9e et attendue par Javier Guillen, directeur du Grand Tour espagnol.",
+      "image": "https://i.eurosport.com/2017/04/14/2062976-43255022-128-96.jpg",
+      "date": 158816.817,
+      "author": "Beno\u00EEt Vittek",
+      "sport": {
+        "id": 18,
+        "name": "Cyclisme"
+      }
+    }
+  ]
+}

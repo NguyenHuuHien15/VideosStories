@@ -158,4 +158,6 @@ dependencies {
     implementation "androidx.fragment:fragment-ktx:$fragmentKtxVersion"
     implementation "androidx.fragment:fragment:$fragmentVersion"
 
+    androidTestImplementation "com.squareup.okhttp3:mockwebserver:3.14.2"
+
 }

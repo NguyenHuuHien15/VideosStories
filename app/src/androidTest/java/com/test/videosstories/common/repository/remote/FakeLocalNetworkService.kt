@@ -4,8 +4,8 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Inject
 
-class NetworkService @Inject constructor() : INetworkService{
-    val LOG_TAG = NetworkService::class.simpleName
+class FakeLocalNetworkService @Inject constructor() : INetworkService {
+    val LOG_TAG = FakeLocalNetworkService::class.simpleName
 
     private val retrofit = Retrofit.Builder()
         .baseUrl(getUrl())
@@ -13,7 +13,7 @@ class NetworkService @Inject constructor() : INetworkService{
         .build()
 
     override fun getUrl(): String {
-        return "https://extendsclass.com"
+        return "http://localhost:8080/"
     }
 
     override suspend fun getData(): NetworkItemsCollection {

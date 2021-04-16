@@ -44,6 +44,10 @@ val storyEntity = ItemEntity(
 )
 
 class FakeNetworkService @Inject constructor() : INetworkService {
+    override fun getUrl(): String {
+        return StringUtils.EMPTY // not need here
+    }
+
     override suspend fun getData(): NetworkItemsCollection {
         return NetworkItemsCollection(listOf(networkVideo), listOf(networkStory))
     }
