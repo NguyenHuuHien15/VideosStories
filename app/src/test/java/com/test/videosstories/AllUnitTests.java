@@ -20,7 +20,8 @@ import org.junit.runners.Suite;
         UtilTest.class,
         StoryDetailsViewModelTest.class,
         PlayerVideoViewModelTest.class,
-        ItemsRepoTest.class
+        ItemsRepoTest.class,
+        //RoboAppTestWithMockServer.class,
 })
 // @formatter:on
 public class AllUnitTests {
