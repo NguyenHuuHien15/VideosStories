@@ -1,7 +1,6 @@
 package com.test.videosstories
 
 import android.view.View
-import androidx.test.core.app.ActivityScenario
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.matcher.RootMatchers.withDecorView
@@ -77,7 +76,6 @@ class AppTestWithMockServerError {
 
     @Test
     fun runAppWithMockServerError() {
-        //ActivityScenario.launch(MainActivity::class.java)
         onView(withText(R.string.no_internet_connection))
             .inRoot(withDecorView(not(decorView)))// Here we use decorView
             .check(matches(isDisplayed()))

@@ -8,10 +8,8 @@ import com.test.videosstories.LiveDataTestUtil
 import com.test.videosstories.common.repository.ItemsRepo
 import com.test.videosstories.common.repository.local.ItemDao
 import com.test.videosstories.common.repository.local.ItemDatabase
-import com.test.videosstories.common.repository.remote.FakeNetworkService
-import com.test.videosstories.common.repository.remote.INetworkService
-import com.test.videosstories.common.repository.remote.story
-import com.test.videosstories.common.repository.remote.video
+import com.test.videosstories.common.repository.local.LocalDataSource
+import com.test.videosstories.common.repository.remote.*
 import dagger.hilt.android.testing.HiltAndroidRule
 import dagger.hilt.android.testing.HiltAndroidTest
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -47,7 +45,7 @@ class ItemsCollectionViewModelInstrumentedTest {
             .build()
         itemDao = db.itemDao
         networkService = FakeNetworkService()
-        itemsRepo = ItemsRepo(networkService, db)
+        itemsRepo = ItemsRepo(RemoteDataSource(networkService), LocalDataSource(itemDao))
         viewModel = ItemsCollectionViewModel(itemsRepo)
     }
 
