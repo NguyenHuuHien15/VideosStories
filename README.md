@@ -1,5 +1,5 @@
 # VideosStories
-Technical Test Eurosport
+Technical Test
 
 Hello,
 
