@@ -5,8 +5,10 @@ import androidx.lifecycle.MutableLiveData
 import com.test.videosstories.LiveDataTestUtil
 import com.test.videosstories.common.repository.local.ItemDao
 import com.test.videosstories.common.repository.local.ItemDatabase
+import com.test.videosstories.common.repository.local.LocalDataSource
 import com.test.videosstories.common.repository.local.entity.ItemEntity
 import com.test.videosstories.common.repository.remote.INetworkService
+import com.test.videosstories.common.repository.remote.RemoteDataSource
 import com.test.videosstories.list.model.ItemForView
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runBlockingTest
@@ -25,6 +27,8 @@ class ItemsRepoTest {
     private lateinit var db: ItemDatabase
     private lateinit var itemDao: ItemDao
     private lateinit var networkService: INetworkService
+    private lateinit var remoteDataSource: RemoteDataSource
+    private lateinit var localDataSource: LocalDataSource
     private lateinit var itemsRepo: ItemsRepo
 
     private lateinit var videoEntity: ItemEntity
@@ -38,7 +42,9 @@ class ItemsRepoTest {
         db = mock(ItemDatabase::class.java)
         itemDao = mock(ItemDao::class.java)
         networkService = mock(INetworkService::class.java)
-        itemsRepo = ItemsRepo(networkService, db)
+        remoteDataSource = RemoteDataSource(networkService)
+        localDataSource = LocalDataSource(itemDao)
+        itemsRepo = ItemsRepo(remoteDataSource, localDataSource)
 
         videoEntity = ItemEntity(
             1, "Video 1", "https://abc.com/vid.jpg", "https://abc.com/vid.mp4",

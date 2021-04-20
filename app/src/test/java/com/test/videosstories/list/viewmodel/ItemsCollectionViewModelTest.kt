@@ -4,15 +4,11 @@ import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.test.videosstories.LiveDataTestUtil
 import com.test.videosstories.common.repository.ItemsRepo
 import com.test.videosstories.list.model.ItemForView
-import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.test.runBlockingTest
 import org.junit.Assert.assertEquals
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 import org.mockito.Mockito.mock
-import org.mockito.exceptions.base.MockitoException
-import org.mockito.Mockito.`when` as whenever
 
 class ItemsCollectionViewModelTest {
 
@@ -39,26 +35,6 @@ class ItemsCollectionViewModelTest {
             null, "Volley teaser content", "https://abc.com/volley.jpg", "David", false
         )
     }
-
-    /*@ExperimentalCoroutinesApi
-    @Test
-    fun getAndSaveNetworkItemsToDB() = runBlockingTest {
-        whenever(itemsRepo.getAndSaveNetworkItemsToDB()).thenReturn(Unit)
-
-        viewModel.getAndSaveNetworkItemsToDB()
-
-        assertEquals(false, LiveDataTestUtil.getValue(viewModel.needNotifyNetworkError))
-    }
-
-    @ExperimentalCoroutinesApi
-    @Test
-    fun getAndSaveNetworkItemsToDBWhenError() = runBlockingTest {
-        whenever(itemsRepo.getAndSaveNetworkItemsToDB()).thenThrow(Exception())
-
-        viewModel.getAndSaveNetworkItemsToDB()
-
-        assertEquals(true, LiveDataTestUtil.getValue(viewModel.needNotifyNetworkError))
-    }*/
 
     @Test
     fun getClickedItem() {
