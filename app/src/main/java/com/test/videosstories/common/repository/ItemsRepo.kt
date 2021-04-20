@@ -1,33 +1,27 @@
 package com.test.videosstories.common.repository
 
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.Transformations
-import com.test.videosstories.common.repository.local.ItemDatabase
-import com.test.videosstories.common.repository.remote.INetworkService
-import com.test.videosstories.common.util.networkToEntities
-import com.test.videosstories.common.util.toModels
+import com.test.videosstories.common.repository.local.LocalDataSource
+import com.test.videosstories.common.repository.remote.RemoteDataSource
 import com.test.videosstories.list.model.ItemForView
 import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
-class ItemsRepo @Inject constructor(private val networkService: INetworkService, private val database: ItemDatabase) {
+class ItemsRepo @Inject constructor(private val remoteDataSource: RemoteDataSource, private val localDataSource: LocalDataSource) {
     val LOG_TAG = ItemsRepo::class.simpleName
 
     @Throws(Exception::class)
     suspend fun getAndSaveNetworkItemsToDB() {
-        val data = networkService.getData()
-        val entities = networkToEntities(data)
-        database.itemDao.insertAll(entities)
+        val data = remoteDataSource.getRemoteItems()
+        localDataSource.saveAllItemsToDB(data)
     }
 
     fun getAllItemsFromDB(): LiveData<List<ItemForView>> {
-        return Transformations.map(database.itemDao.getItems()) {
-            toModels(it)
-        }
+        return localDataSource.getAllItemsFromDB()
     }
 
     suspend fun getItemFromDB(id: Int): ItemForView? {
-        return database.itemDao.getItem(id)?.toModel()
+        return localDataSource.getItemFromDB(id)
     }
 }

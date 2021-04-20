@@ -1,6 +1,7 @@
 package com.test.videosstories.common.di
 
 import android.content.Context
+import com.test.videosstories.common.repository.local.ItemDao
 import com.test.videosstories.common.repository.local.ItemDatabase
 import com.test.videosstories.common.repository.local.getDatabase
 import dagger.Module
@@ -18,5 +19,11 @@ class RoomModule {
     @Singleton
     fun providesDatabase(@ApplicationContext context: Context): ItemDatabase {
         return getDatabase(context)
+    }
+
+    @Provides
+    @Singleton
+    fun providesDao(database: ItemDatabase): ItemDao {
+        return database.itemDao
     }
 }
