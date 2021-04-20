@@ -7,6 +7,7 @@ import androidx.test.ext.junit.rules.ActivityScenarioRule
 import com.test.videosstories.common.di.NetworkModule
 import com.test.videosstories.common.repository.remote.FakeLocalNetworkService
 import com.test.videosstories.common.repository.remote.INetworkService
+import com.test.videosstories.common.view.MainActivity
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn

@@ -3,7 +3,7 @@ package com.test.videosstories.common.repository
 import androidx.lifecycle.LiveData
 import com.test.videosstories.common.repository.local.LocalDataSource
 import com.test.videosstories.common.repository.remote.RemoteDataSource
-import com.test.videosstories.list.model.ItemForView
+import com.test.videosstories.common.model.ItemForView
 import javax.inject.Inject
 import javax.inject.Singleton
 

@@ -7,7 +7,7 @@ import androidx.databinding.BindingAdapter
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.test.videosstories.R
-import com.test.videosstories.list.model.ItemForView
+import com.test.videosstories.common.model.ItemForView
 import org.apache.commons.lang3.StringUtils
 
 @BindingAdapter("url")

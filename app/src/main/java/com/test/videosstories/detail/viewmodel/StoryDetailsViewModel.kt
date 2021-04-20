@@ -5,7 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.test.videosstories.common.repository.ItemsRepo
-import com.test.videosstories.list.model.ItemForView
+import com.test.videosstories.common.model.ItemForView
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject

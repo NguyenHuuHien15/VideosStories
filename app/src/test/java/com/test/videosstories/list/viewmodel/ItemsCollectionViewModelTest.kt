@@ -3,7 +3,7 @@ package com.test.videosstories.list.viewmodel
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.test.videosstories.LiveDataTestUtil
 import com.test.videosstories.common.repository.ItemsRepo
-import com.test.videosstories.list.model.ItemForView
+import com.test.videosstories.common.model.ItemForView
 import org.junit.Assert.assertEquals
 import org.junit.Before
 import org.junit.Rule

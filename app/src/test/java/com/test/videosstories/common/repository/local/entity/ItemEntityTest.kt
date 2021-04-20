@@ -1,6 +1,6 @@
 package com.test.videosstories.common.repository.local.entity
 
-import com.test.videosstories.list.model.ItemForView
+import com.test.videosstories.common.model.ItemForView
 import org.junit.Assert.assertEquals
 import org.junit.Before
 import org.junit.Test

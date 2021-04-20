@@ -11,6 +11,7 @@ import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.test.videosstories.common.di.NetworkModule
 import com.test.videosstories.common.repository.remote.FakeLocalNetworkService
 import com.test.videosstories.common.repository.remote.INetworkService
+import com.test.videosstories.common.view.MainActivity
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn

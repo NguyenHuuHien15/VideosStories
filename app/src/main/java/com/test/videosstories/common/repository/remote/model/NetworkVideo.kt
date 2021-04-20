@@ -1,10 +1,10 @@
-package com.test.videosstories.common.repository.remote
+package com.test.videosstories.common.repository.remote.model
 
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
 import java.io.Serializable
 
-class NetworkStory : Serializable {
+class NetworkVideo : Serializable {
 
     @SerializedName("id")
     @Expose
@@ -14,36 +14,36 @@ class NetworkStory : Serializable {
     @Expose
     var title: String? = null
 
-    @SerializedName("teaser")
+    @SerializedName("thumb")
     @Expose
-    var teaser: String? = null
+    var thumb: String? = null
 
-    @SerializedName("image")
+    @SerializedName("url")
     @Expose
-    var image: String? = null
+    var url: String? = null
 
     @SerializedName("date")
     @Expose
     var date: Double? = null
 
-    @SerializedName("author")
-    @Expose
-    var author: String? = null
-
     @SerializedName("sport")
     @Expose
     lateinit var sport: NetworkSport
 
+    @SerializedName("views")
+    @Expose
+    var views: Long? = null
+
     constructor() {}
 
-    constructor(id: Int, title: String?, teaser: String?, image: String?, date: Double?, author: String?, sport: NetworkSport) {
+    constructor(id: Int, title: String?, thumb: String?, url: String?, date: Double?, sport: NetworkSport, views: Long?) {
         this.id = id
         this.title = title
-        this.teaser = teaser
-        this.image = image
+        this.thumb = thumb
+        this.url = url
         this.date = date
-        this.author = author
         this.sport = sport
+        this.views = views
     }
 
     companion object {

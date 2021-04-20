@@ -2,7 +2,7 @@ package com.test.videosstories.common.repository.local.entity
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import com.test.videosstories.list.model.ItemForView
+import com.test.videosstories.common.model.ItemForView
 
 @Entity(tableName = "item_entity_table")
 data class ItemEntity constructor(

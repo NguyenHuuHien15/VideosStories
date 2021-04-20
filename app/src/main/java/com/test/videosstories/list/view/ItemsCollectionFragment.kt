@@ -17,7 +17,7 @@ import com.test.videosstories.common.util.sortByDate
 import com.test.videosstories.common.view.IDiffItemCallback
 import com.test.videosstories.common.view.ITextSearchFilter
 import com.test.videosstories.databinding.FragmentItemsCollectionBinding
-import com.test.videosstories.list.model.ItemForView
+import com.test.videosstories.common.model.ItemForView
 import com.test.videosstories.list.viewmodel.ItemsCollectionViewModel
 import dagger.hilt.android.AndroidEntryPoint
 

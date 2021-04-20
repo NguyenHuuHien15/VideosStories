@@ -1,4 +1,4 @@
-package com.test.videosstories.list.model
+package com.test.videosstories.common.model
 
 data class ItemForView constructor(
     val id: Int,

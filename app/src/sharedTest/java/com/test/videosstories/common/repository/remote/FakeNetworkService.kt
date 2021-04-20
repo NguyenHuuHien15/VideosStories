@@ -1,7 +1,11 @@
 package com.test.videosstories.common.repository.remote
 
 import com.test.videosstories.common.repository.local.entity.ItemEntity
-import com.test.videosstories.list.model.ItemForView
+import com.test.videosstories.common.repository.remote.model.NetworkItemsCollection
+import com.test.videosstories.common.repository.remote.model.NetworkSport
+import com.test.videosstories.common.repository.remote.model.NetworkStory
+import com.test.videosstories.common.repository.remote.model.NetworkVideo
+import com.test.videosstories.common.model.ItemForView
 import org.apache.commons.lang3.StringUtils
 import javax.inject.Inject
 

@@ -2,10 +2,10 @@ package com.test.videosstories.common.repository.local
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Transformations
-import com.test.videosstories.common.repository.remote.NetworkItemsCollection
+import com.test.videosstories.common.repository.remote.model.NetworkItemsCollection
 import com.test.videosstories.common.util.networkToEntities
 import com.test.videosstories.common.util.toModels
-import com.test.videosstories.list.model.ItemForView
+import com.test.videosstories.common.model.ItemForView
 import javax.inject.Inject
 import javax.inject.Singleton
 

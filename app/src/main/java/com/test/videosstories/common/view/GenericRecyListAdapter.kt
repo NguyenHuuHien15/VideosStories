@@ -75,8 +75,8 @@ open class GenericRecyListAdapter<K : Any?>(_context: Context, list: List<K>?, p
         }
 
         /**
-         * @param constraint , the text used to filter the K objects list
-         * @param obj        , the K object eligibile for filtering
+         * @param constraint the text used to filter the K objects list
+         * @param obj        the K object eligibile for filtering
          * @return true if the object should be filtered, false otherwise
          */
         private fun shouldBeDisplayed(constraint: CharSequence, obj: K): Boolean {

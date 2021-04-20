@@ -1,7 +1,8 @@
-package com.test.videosstories
+package com.test.videosstories.common.view
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.test.videosstories.R
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

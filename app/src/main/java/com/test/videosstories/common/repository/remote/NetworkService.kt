@@ -1,5 +1,6 @@
 package com.test.videosstories.common.repository.remote
 
+import com.test.videosstories.common.repository.remote.model.NetworkItemsCollection
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Inject

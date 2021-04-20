@@ -3,7 +3,7 @@ package com.test.videosstories.list.viewmodel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.test.videosstories.list.model.ItemForView
+import com.test.videosstories.common.model.ItemForView
 
 class ItemViewModel : ViewModel() {
     val LOG_TAG = ItemViewModel::class.simpleName

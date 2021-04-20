@@ -1,4 +1,4 @@
-package com.test.videosstories.common.repository.remote
+package com.test.videosstories.common.repository.remote.model
 
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName

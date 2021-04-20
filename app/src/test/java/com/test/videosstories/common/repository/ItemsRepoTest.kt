@@ -9,7 +9,7 @@ import com.test.videosstories.common.repository.local.LocalDataSource
 import com.test.videosstories.common.repository.local.entity.ItemEntity
 import com.test.videosstories.common.repository.remote.INetworkService
 import com.test.videosstories.common.repository.remote.RemoteDataSource
-import com.test.videosstories.list.model.ItemForView
+import com.test.videosstories.common.model.ItemForView
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runBlockingTest
 import org.apache.commons.lang3.StringUtils

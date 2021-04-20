@@ -9,7 +9,7 @@ import com.test.videosstories.common.view.GenericRecyListAdapter
 import com.test.videosstories.common.view.IDiffItemCallback
 import com.test.videosstories.common.view.ITextSearchFilter
 import com.test.videosstories.databinding.RecyItemBinding
-import com.test.videosstories.list.model.ItemForView
+import com.test.videosstories.common.model.ItemForView
 import com.test.videosstories.list.viewmodel.ItemViewModel
 import com.test.videosstories.list.viewmodel.ItemsCollectionViewModel
 
