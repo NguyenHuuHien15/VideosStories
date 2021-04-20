@@ -5,6 +5,7 @@ import com.google.gson.annotations.SerializedName
 import java.io.Serializable
 
 class NetworkSport : Serializable {
+
     @SerializedName("id")
     @Expose
     var id: Int = 0

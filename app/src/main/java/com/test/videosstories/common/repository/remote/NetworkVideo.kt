@@ -5,6 +5,7 @@ import com.google.gson.annotations.SerializedName
 import java.io.Serializable
 
 class NetworkVideo : Serializable {
+
     @SerializedName("id")
     @Expose
     var id: Int = 0

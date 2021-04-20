@@ -5,7 +5,9 @@ import javax.inject.Singleton
 
 @Singleton
 class RemoteDataSource @Inject constructor(private val networkService: INetworkService) {
+
     suspend fun getRemoteItems(): NetworkItemsCollection {
         return networkService.getData()
     }
+
 }

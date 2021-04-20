@@ -5,7 +5,6 @@ import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Inject
 
 class NetworkService @Inject constructor() : INetworkService{
-    val LOG_TAG = NetworkService::class.simpleName
 
     private val retrofit = Retrofit.Builder()
         .baseUrl(getUrl())
