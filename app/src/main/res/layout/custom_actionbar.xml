@@ -6,10 +6,11 @@
     android:padding="@dimen/dp_16">
 
     <TextView
+        android:id="@+id/tv_title"
         style="@style/TextWhiteBold22"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:textAllCaps="true"
-        android:text="Featured" />
+        android:text="Featured"
+        android:textAllCaps="true" />
 </RelativeLayout>

@@ -1,0 +1,7 @@
+<resources>
+    <string name="commonapi_version">Version</string>
+    <string name="commonapi_two_points">:</string>
+    <string name="commonapi_error">Erreur</string>
+    <string name="commonapi_lowercase_env">env</string>
+    <string name="commonapi_lowercase_code">code</string>
+</resources>

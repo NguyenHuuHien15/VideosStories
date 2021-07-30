@@ -1,6 +1,71 @@
+ext {
+    compileSdkVersion = 30
+    buildToolsVersion = "30.0.3"
+    minSdkVersion = 24
+    targetSdkVersion = 30
+}
+
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 buildscript {
-    ext.hilt_version = '2.37'
+    ext {
+        hilt_version = '2.37'
+        fragmentVersion = '1.3.6'
+        fragmentKtxVersion = '1.3.6'
+        dexMakerVersion = '2.12.1'
+        logging_interceptor_version = '3.9.0'
+
+        // version des dépendances communes des modules du projet
+        hilt_version = '2.37'
+        hilt_lifecycle_viewmodel_version = '1.0.0-alpha03'
+        hilt_compiler_version = '1.0.0'
+        kotlin_version = '1.5.21'
+        kotlin_core = '1.6.0'
+        coroutines = '1.5.0'
+        lifecycle_version = '2.3.1'
+        lifecycle_extensions_version = '2.2.0'
+        dagger_version = '2.37'
+        retrofit_version = '2.9.0'
+        gson_version = '2.9.0'
+        google_code_gson_version = '2.8.6'
+        logging_interceptor_version = '3.9.0'
+
+        androidx_fragment = '1.3.6'
+        androidx_activity = '1.2.4'
+
+        // testing
+        junit_version = '4.13.2'
+        mockito_version = '3.8.0'
+        mockito_android_version = '3.3.3'
+        androidx_core_testing_version = '2.1.0'
+        mockwebserver_version = '3.14.2'
+        espresso_version = '3.4.0'
+        espresso_contrib_version = '3.0.2'
+        androidx_junit_version = '1.1.3'
+        coroutines_test_version = '1.5.0'
+        test_runner_version = '1.4.0'
+
+        // versions des dépendance du module app
+        app_compat = '1.3.1'
+        android_material = '1.4.0'
+        firebase_version = '27.0.0'
+        nav_version = "2.3.5"
+
+        // versions des plugins gradle
+        android_gradle_plugin_version = '4.2.2'
+        gitversion_plugin_version = '1.0.0'
+        sonarqube_plugin_version = '3.2.0'
+        google_services_plugin_version = '4.3.5'
+        crashlytics_plugin_version = '2.5.0'
+
+        apache_commons_lang3_version = '3.11'
+        preference_ktx_version = '1.1.1'
+
+        constraintlayout_version = '2.0.4'
+
+        navigation_version = '2.3.5'
+
+        annotation_experimental_version = '1.1.0'
+    }
 
     repositories {
         google()
@@ -8,7 +73,7 @@ buildscript {
     }
 
     dependencies {
-        classpath 'com.android.tools.build:gradle:4.2.2'
+        classpath 'com.android.tools.build:gradle:7.0.0'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.5.21"
         classpath "androidx.navigation:navigation-safe-args-gradle-plugin:2.3.5"
         classpath "com.google.dagger:hilt-android-gradle-plugin:$hilt_version"
@@ -24,10 +89,4 @@ allprojects {
 
 task clean(type: Delete) {
     delete rootProject.buildDir
-}
-
-ext {
-    fragmentVersion = '1.3.6'
-    fragmentKtxVersion = '1.3.6'
-    dexMakerVersion = '2.12.1'
 }

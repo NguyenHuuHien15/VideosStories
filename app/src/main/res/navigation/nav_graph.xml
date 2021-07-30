@@ -4,7 +4,27 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/ItemsCollectionFragment">
+    app:startDestination="@id/HomeFragment">
+
+    <fragment
+        android:id="@+id/HomeFragment"
+        android:name="com.test.videosstories.presentation.home.HomeFragment"
+        android:label="ItemsCollectionFragment"
+        tools:layout="@layout/fragment_home">
+
+        <action
+            android:id="@+id/action_Home_to_AllVideos"
+            app:destination="@id/AllVideosFragment" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/AllVideosFragment"
+        android:name="com.test.videosstories.presentation.videos.AllVideosFragment"
+        android:label="AllVideosFragment"
+        tools:layout="@layout/fragment_all_videos">
+
+    </fragment>
 
     <fragment
         android:id="@+id/ItemsCollectionFragment"

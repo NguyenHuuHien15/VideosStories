@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="viewModel"
+            type="com.test.videosstories.presentation.videos.AllVideosViewModel" />
+
+        <variable
+            name="viewModelItem"
+            type="com.test.videosstories.presentation.videos.VideoItemViewModel" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dp_16"
+        android:layout_marginTop="@dimen/dp_16"
+        android:layout_marginEnd="@dimen/dp_16"
+        android:background="@drawable/background_rounded_rect_white"
+        android:onClick="@{() -> viewModel.onItemClicked(viewModelItem.item)}"
+        android:orientation="vertical"
+        android:paddingBottom="@dimen/dp_16"
+        android:translationZ="@dimen/dp_4">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="260dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="260dp"
+                android:layout_marginBottom="@dimen/dp_20">
+
+                <ImageView
+                    android:id="@+id/imgv"
+                    android:layout_width="match_parent"
+                    android:layout_height="260dp"
+                    android:background="@drawable/background_rounded_rect_white"
+                    android:scaleType="centerCrop"
+                    app:url="@{viewModelItem.item}"
+                    tools:src="@tools:sample/backgrounds/scenic" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_12"
+                    android:layout_alignParentBottom="true"
+                    android:background="@color/white" />
+            </RelativeLayout>
+
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:background="@drawable/ic_play_white_48_0"
+                android:onClick="@{() -> viewModel.onItemClicked(viewModelItem.item)}"
+                android:translationZ="@dimen/dp_8"/>
+
+            <TextView
+                android:id="@+id/tv_sport_name"
+                style="@style/TextWhiteBold20"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_marginStart="@dimen/dp_16"
+                android:background="@drawable/background_rounded_rect"
+                android:paddingStart="@dimen/dp_16"
+                android:paddingTop="@dimen/dp_8"
+                android:paddingEnd="@dimen/dp_16"
+                android:paddingBottom="@dimen/dp_8"
+                android:text="@{viewModelItem.item.sport.name}"
+                android:textAllCaps="true"
+                tools:text="Sport name" />
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/tv_title"
+            style="@style/TextBlackBold24"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp_16"
+            android:layout_marginTop="@dimen/dp_16"
+            android:text="@{viewModelItem.item.title}"
+            tools:text="Title" />
+
+        <TextView
+            android:id="@+id/tv_views_or_author"
+            style="@style/Text16"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp_16"
+            android:layout_marginTop="@dimen/dp_8"
+            app:content="@{viewModelItem.item}"
+            tools:text="Views or author" />
+
+    </LinearLayout>
+
+</layout>

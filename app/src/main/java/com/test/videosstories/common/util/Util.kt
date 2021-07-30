@@ -3,6 +3,7 @@ package com.test.videosstories.common.util
 import com.test.videosstories.common.repository.local.entity.ItemEntity
 import com.test.videosstories.common.repository.remote.model.NetworkItemsCollection
 import com.test.videosstories.common.model.ItemForView
+import com.test.videosstories.domain.Video
 import org.apache.commons.lang3.StringUtils
 
 fun networkToEntities(networkItemsCollection: NetworkItemsCollection): List<ItemEntity> {
@@ -42,6 +43,11 @@ fun toModels(list: List<ItemEntity>?): List<ItemForView> {
 }
 
 fun sortByDate(list: List<ItemForView>?): List<ItemForView> {
+    if (list == null || list.isEmpty()) return emptyList()
+    return list.toMutableList().sortedByDescending { it.date }
+}
+
+fun sortVideosByDate(list: List<Video>?): List<Video> {
     if (list == null || list.isEmpty()) return emptyList()
     return list.toMutableList().sortedByDescending { it.date }
 }
