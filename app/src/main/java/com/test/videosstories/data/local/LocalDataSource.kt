@@ -53,8 +53,8 @@ class LocalDataSource @Inject constructor(
         val videoDao = db.videoDao
         val videosAndSports = videoDao.getVideosAndSports()
         val vids = mutableListOf<Video>()
-        for (videoAndSprot in videosAndSports) {
-            vids.addAll(videoAndSprot.toDomain())
+        for (videoAndSport in videosAndSports) {
+            vids.addAll(videoAndSport.toDomain())
         }
         return DataResult.Success(vids)
     }
